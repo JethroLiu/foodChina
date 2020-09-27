@@ -1,10 +1,11 @@
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
+import router from "./router"; // 路由
 import axios from "axios";
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-import Vuex from "vuex";
+import ElementUI from "element-ui"; // element-ui
+import "element-ui/lib/theme-chalk/index.css"; // element-ui 全局 css
+import Vuex from "vuex"; // Vuex 仓库
+import "normalize.css/normalize.css"; // 全局初始化样式表 normalize
 
 Vue.use(ElementUI);
 Vue.use(Vuex);
