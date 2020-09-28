@@ -10,16 +10,6 @@
       </router-link>
     </div>
 
-    <!-- 下拉菜单 -->
-    <a href="javascript:void(0);" class="triangle_Box">
-      <div class="triangle"></div>
-      <div class="others">
-        <router-link :to="i.toWhere" v-for="i in moreBtn" :key="i.navName">
-          {{ i.navName }}
-        </router-link>
-      </div>
-    </a>
-
     <!-- 右侧导航 -->
     <div class="rightNav">
       <router-link to="##">登录</router-link>
@@ -61,7 +51,7 @@ export default {
   data() {
     return {
       navBtn: [
-        { navName: "首页", toWhere: "##" },
+        { navName: "首页", toWhere: "/" },
         { navName: "菜谱", toWhere: "##" },
         { navName: "食材", toWhere: "##" },
         { navName: "珍选", toWhere: "##" },
@@ -71,9 +61,6 @@ export default {
         { navName: "话题", toWhere: "##" },
         { navName: "活动", toWhere: "##" },
         { navName: "搜索", toWhere: "##" },
-      ],
-
-      moreBtn: [
         { navName: "烘焙", toWhere: "##" },
         { navName: "妈妈派", toWhere: "##" },
       ],
@@ -82,13 +69,13 @@ export default {
 };
 </script>
 
-
 <style scoped>
 #topnav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  min-width: 990px;
   height: 40px;
   background-color: #333333;
 }
@@ -121,55 +108,6 @@ export default {
 }
 
 .leftNav a:hover {
-  background-color: #0d0d0d;
-}
-
-/* 下拉菜单 */
-.triangle_Box {
-  position: relative;
-  vertical-align: top;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-}
-
-.triangle_Box:hover {
-  background-color: #0d0d0d;
-}
-
-.triangle_Box:hover .others {
-  display: block;
-}
-
-.triangle {
-  position: absolute;
-  top: 18px;
-  left: 15px;
-  border: 5px solid transparent;
-  border-top: 5px solid #cccccc;
-}
-
-.others {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  display: none;
-  width: 66px;
-  background-color: #333333;
-}
-
-.others a {
-  display: block;
-  height: 40px;
-  font-size: 14px;
-  line-height: 40px;
-  color: #cccccc;
-  text-decoration: none;
-  text-align: center;
-  user-select: none;
-}
-
-.others a:hover {
   background-color: #0d0d0d;
 }
 

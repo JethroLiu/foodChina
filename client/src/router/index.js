@@ -4,39 +4,39 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: "/test",
-        name: "About",
-
-        component: () => import("../components/HelloWorld.vue"),
-    },
+  {
+    // 首页
+    path: "/",
+    name: "Index",
+    component: () => import("../views/Index.vue"),
+  },
 ];
 
 const router = new VueRouter({
-    mode: "history",
-    base: process.env.BASE_URL,
-    routes,
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes,
 });
 
 // 全局前置守卫 访问拦截
 router.beforeEach((to, from, next) => {
-    // 允许访问首页和登录注册
-    // if (to.path == "/" || to.path == "/MyUser/Login") {
-    //     next();
-    // } else {
-    //     // 查看用户是否登录
-    //     let flag = localStorage.getItem("islogin"); // 取本地缓存查看是否登陆过
-    //     if (flag) {
-    //         next();
-    //     } else {
-    //         next("/Login"); // next 也会触发 beforeEach
-    //     }
-    // }
+  // 允许访问首页和登录注册
+  // if (to.path == "/" || to.path == "/MyUser/Login") {
+  //     next();
+  // } else {
+  //     // 查看用户是否登录
+  //     let flag = localStorage.getItem("islogin"); // 取本地缓存查看是否登陆过
+  //     if (flag) {
+  //         next();
+  //     } else {
+  //         next("/Login"); // next 也会触发 beforeEach
+  //     }
+  // }
 
-    if (to.path == "/Publish") {
-        next();
-    }
+  if (to.path == "/") {
     next();
+  }
+  next();
 });
 
 export default router;
