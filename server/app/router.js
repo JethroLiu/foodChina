@@ -7,4 +7,6 @@ module.exports = (app) => {
   const { router, controller } = app;
   router.get("/", controller.home.index);
   router.get("/slider", controller.home.slider);
+  router.get("/idea", controller.home.idea);
+  router.get("/eatables", controller.home.eatables);
 };

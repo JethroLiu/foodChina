@@ -14,6 +14,20 @@ class HomeController extends Controller {
     let res = await this.ctx.service.home.slider();
     ctx.body = res;
   }
+
+  // 生活小妙招
+  async idea() {
+    const { ctx } = this;
+    let res = await this.ctx.service.home.idea();
+    ctx.body = res;
+  }
+
+  // 菜谱
+  async eatables() {
+    const { ctx } = this;
+    let res = await this.ctx.service.home.eatables();
+    ctx.body = res;
+  }
 }
 
 module.exports = HomeController;

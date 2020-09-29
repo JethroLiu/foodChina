@@ -74,6 +74,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 20;
   width: 100%;
   min-width: 990px;
   height: 40px;

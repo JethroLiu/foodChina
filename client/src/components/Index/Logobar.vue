@@ -3,9 +3,14 @@
     <div class="logoPic"></div>
 
     <div class="logoNav">
-      <router-link :to="i.navUrl" v-for="i in navItem" :key="i.title">{{
-        i.title
-      }}</router-link>
+      <router-link
+        :class="i == 0 ? 'actived' : ''"
+        :to="el.navUrl"
+        v-for="(el, i) in navItem"
+        :key="el.title"
+        @click.native="fn($event, i)"
+        >{{ el.title }}</router-link
+      >
     </div>
 
     <div class="serchBox">
@@ -33,6 +38,16 @@ export default {
     };
   },
   components: {},
+  methods: {
+    // 点击显示样式
+    fn(e, arg) {
+      console.log(e.target.parentElement.children);
+      Array.from(e.target.parentElement.children).forEach((el) => {
+        el.className = "";
+      });
+      e.target.className = "actived";
+    },
+  },
 
   mounted() {},
 };
@@ -112,5 +127,9 @@ export default {
 
 .logoNav a:hover {
   color: #ff6767;
+}
+
+.actived {
+  color: #ff6767 !important;
 }
 </style>
