@@ -4,6 +4,8 @@
     <Slider></Slider>
     <Idea></Idea>
     <Eatables></Eatables>
+    <MakeUp></MakeUp>
+    <Share></Share>
   </div>
 </template>
 
@@ -12,6 +14,8 @@ import Logobar from "@/components/Index/Logobar.vue";
 import Slider from "@/components/Index/Slider.vue";
 import Idea from "@/components/Index/Idea.vue";
 import Eatables from "@/components/Index/Eatables.vue";
+import MakeUp from "@/components/Index/MakeUp.vue";
+import Share from "@/components/Index/Share.vue";
 
 export default {
   name: "Index",
@@ -20,6 +24,8 @@ export default {
     Slider,
     Idea,
     Eatables,
+    MakeUp,
+    Share,
   },
 };
 </script>

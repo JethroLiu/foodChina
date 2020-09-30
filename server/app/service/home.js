@@ -3,6 +3,7 @@
 const Service = require("egg").Service;
 
 class HomeService extends Service {
+  // 轮播图
   async slider() {
     const { ctx } = this;
 
@@ -12,6 +13,7 @@ class HomeService extends Service {
     return data;
   }
 
+  // 生活技巧
   async idea() {
     const { ctx } = this;
 
@@ -32,12 +34,19 @@ class HomeService extends Service {
     return data1;
   }
 
+  // 菜谱
   async eatables() {
     const { ctx } = this;
-
-    const sql = "";
+    const sql = "SELECT eatables.*, myuser.username  FROM eatables,myuser WHERE eatables.userId=myuser.id LIMIT 0, 20";
     let data = await this.app.mysql.query(sql);
+    return data;
+  }
 
+  // 食材
+  async makeup() {
+    const { ctx } = this;
+    const sql = "SELECT * FROM makeup LIMIT 0, 14;";
+    let data = await this.app.mysql.query(sql);
     return data;
   }
 }

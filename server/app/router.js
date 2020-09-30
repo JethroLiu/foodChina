@@ -9,4 +9,5 @@ module.exports = (app) => {
   router.get("/slider", controller.home.slider);
   router.get("/idea", controller.home.idea);
   router.get("/eatables", controller.home.eatables);
+  router.get("/makeup", controller.home.makeup);
 };

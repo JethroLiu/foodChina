@@ -3,9 +3,9 @@
     <div class="itemBox" v-for="el in myIdea" :key="el.id">
       <!-- 标题栏 -->
       <div class="ideaTitle">
-        <a class="actived" href="##" @click="fun">{{ el.title1 }}</a>
-        <a href="##" @click="fun">{{ el.title2 }}</a>
-        <a href="##" class="more">{{ el.title3 }}</a>
+        <a class="actived" href="javascript:;" @click="fun">{{ el.title1 }}</a>
+        <a href="javascript:;" @click="fun">{{ el.title2 }}</a>
+        <a href="javascript:;" class="more">{{ el.title3 }}</a>
       </div>
 
       <!-- 图片 -->
@@ -63,7 +63,7 @@ export default {
 #idea {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .itemBox {

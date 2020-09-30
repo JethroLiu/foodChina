@@ -28,6 +28,13 @@ class HomeController extends Controller {
     let res = await this.ctx.service.home.eatables();
     ctx.body = res;
   }
+
+  // 食材
+  async makeup() {
+    const { ctx } = this;
+    let res = await this.ctx.service.home.makeup();
+    ctx.body = res;
+  }
 }
 
 module.exports = HomeController;
