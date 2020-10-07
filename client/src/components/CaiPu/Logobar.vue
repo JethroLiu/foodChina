@@ -2,6 +2,8 @@
   <div id="logobar" class="w">
     <div class="logoPic"></div>
 
+    <a href="javascript:;" class="logotag">菜谱</a>
+
     <div class="logoNav">
       <router-link
         :class="i == 0 ? 'actived' : ''"
@@ -26,30 +28,12 @@ export default {
   data() {
     return {
       navItem: [
-        { title: "首页", navUrl: "/" },
-        { title: "菜谱", navUrl: "##" },
-        { title: "食材", navUrl: "##" },
-        { title: "珍选", navUrl: "##" },
-        { title: "健康", navUrl: "##" },
-        { title: "专题", navUrl: "##" },
-        { title: "社区", navUrl: "##" },
-        { title: "话题", navUrl: "##" },
+        { title: "菜谱首页", navUrl: "##" },
+        { title: "浏览全部菜谱", navUrl: "##" },
       ],
     };
   },
-  components: {},
-  methods: {
-    // 点击显示样式
-    fn(e, arg) {
-      console.log(e.target.parentElement.children);
-      Array.from(e.target.parentElement.children).forEach((el) => {
-        el.className = "";
-      });
-      e.target.className = "actived";
-    },
-  },
-
-  mounted() {},
+  methods: {},
 };
 </script>
 
@@ -57,6 +41,7 @@ export default {
 #logobar {
   position: relative;
   height: 85px;
+  background-color: #fff;
 }
 
 .logoPic {
@@ -67,6 +52,24 @@ export default {
   height: 43px;
   background-image: url(../../assets/logo.png);
   background-size: 104px 43px;
+}
+
+.logotag {
+  position: absolute;
+  top: 24px;
+  left: 120px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 4px;
+  font-size: 20px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff838b;
+}
+
+.logotag:hover {
+  background-color: #ff6767;
 }
 
 .logoNav {

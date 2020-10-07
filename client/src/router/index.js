@@ -10,6 +10,12 @@ const routes = [
     name: "Index",
     component: () => import("../views/Index.vue"),
   },
+  {
+    // 菜谱
+    path: "/CaiPu",
+    name: "CaiPu",
+    component: () => import("../views/CaiPu.vue"),
+  },
 ];
 
 const router = new VueRouter({

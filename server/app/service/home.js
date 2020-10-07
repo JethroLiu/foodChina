@@ -49,6 +49,23 @@ class HomeService extends Service {
     let data = await this.app.mysql.query(sql);
     return data;
   }
+
+  // 动态
+  async share() {
+    const { ctx } = this;
+    const sql = `
+    SELECT b.id, a.username, a.headpic, b.title, b.content, b.prodate, GROUP_CONCAT(c.image SEPARATOR '&') AS images
+    FROM myuser a, myshare b, myshare_pic c 
+    WHERE a.id=b.userId 
+    AND c.shareId=b.id 
+    GROUP BY b.id
+    DESC
+    LIMIT 
+    0, 10;`;
+    let data = await this.app.mysql.query(sql);
+
+    return data;
+  }
 }
 
 module.exports = HomeService;

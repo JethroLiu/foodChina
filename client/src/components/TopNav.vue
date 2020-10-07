@@ -52,7 +52,7 @@ export default {
     return {
       navBtn: [
         { navName: "首页", toWhere: "/" },
-        { navName: "菜谱", toWhere: "##" },
+        { navName: "菜谱", toWhere: "/CaiPu" },
         { navName: "食材", toWhere: "##" },
         { navName: "珍选", toWhere: "##" },
         { navName: "健康", toWhere: "##" },

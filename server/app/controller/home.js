@@ -35,6 +35,13 @@ class HomeController extends Controller {
     let res = await this.ctx.service.home.makeup();
     ctx.body = res;
   }
+
+  // 话题分享
+  async share() {
+    const { ctx } = this;
+    let res = await this.ctx.service.home.share();
+    ctx.body = res;
+  }
 }
 
 module.exports = HomeController;

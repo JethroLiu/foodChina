@@ -6,6 +6,7 @@
     <Eatables></Eatables>
     <MakeUp></MakeUp>
     <Share></Share>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import Idea from "@/components/Index/Idea.vue";
 import Eatables from "@/components/Index/Eatables.vue";
 import MakeUp from "@/components/Index/MakeUp.vue";
 import Share from "@/components/Index/Share.vue";
+import Footer from "@/components/Index/Footer.vue";
 
 export default {
   name: "Index",
@@ -26,6 +28,7 @@ export default {
     Eatables,
     MakeUp,
     Share,
+    Footer,
   },
 };
 </script>

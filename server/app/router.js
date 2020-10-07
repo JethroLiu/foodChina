@@ -10,4 +10,5 @@ module.exports = (app) => {
   router.get("/idea", controller.home.idea);
   router.get("/eatables", controller.home.eatables);
   router.get("/makeup", controller.home.makeup);
+  router.get("/share", controller.home.share);
 };
