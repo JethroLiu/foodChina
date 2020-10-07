@@ -28,6 +28,7 @@
         </div>
         <p class="foodsTitle">{{ el.foodname }}</p>
         <p class="foodUser">{{ el.username }}</p>
+        <div class="onlyTag" v-if="Boolean(Number(el.only))">独家</div>
       </router-link>
     </div>
   </div>
@@ -139,6 +140,7 @@ export default {
 }
 
 .foods a {
+  position: relative;
   width: 230px;
   height: 305px;
   text-decoration: none;
@@ -185,5 +187,18 @@ export default {
 
 .foodUser:hover {
   color: #ff6767;
+}
+
+.onlyTag {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  height: 20px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #fff;
+  line-height: 20px;
+  background: rgba(0, 0, 0, 0.5);
 }
 </style>

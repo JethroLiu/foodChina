@@ -11,7 +11,7 @@
  Target Server Version : 50173
  File Encoding         : 65001
 
- Date: 30/09/2020 16:15:26
+ Date: 07/10/2020 17:27:53
 */
 
 SET NAMES utf8mb4;
@@ -118,7 +118,7 @@ CREATE TABLE `makeup`  (
   `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '食材名称',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '食材说明',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of makeup
@@ -137,6 +137,45 @@ INSERT INTO `makeup` VALUES (11, 'http://127.0.0.1:7001/public/makeup/yarou.jpg'
 INSERT INTO `makeup` VALUES (12, 'http://127.0.0.1:7001/public/makeup/jiyu.jpg', '鲫鱼', '一勺清汤胜万钱');
 INSERT INTO `makeup` VALUES (13, 'http://127.0.0.1:7001/public/makeup/jichi.jpg', '鸡翅', '老少通吃');
 INSERT INTO `makeup` VALUES (14, 'http://127.0.0.1:7001/public/makeup/paigu.jpg', '排骨', '可记得吮指之乐');
+
+-- ----------------------------
+-- Table structure for myshare
+-- ----------------------------
+DROP TABLE IF EXISTS `myshare`;
+CREATE TABLE `myshare`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NULL DEFAULT NULL COMMENT '发表用户',
+  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '动态标题',
+  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '动态内容',
+  `prodate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发表时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of myshare
+-- ----------------------------
+INSERT INTO `myshare` VALUES (1, 1, '假日', '水煮千张', '2020-10-4');
+INSERT INTO `myshare` VALUES (2, 3, NULL, '#早餐#各式点心', '2020-10-5');
+
+-- ----------------------------
+-- Table structure for myshare_pic
+-- ----------------------------
+DROP TABLE IF EXISTS `myshare_pic`;
+CREATE TABLE `myshare_pic`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `shareId` int(11) NULL DEFAULT NULL COMMENT '动态id',
+  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '动态图片',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of myshare_pic
+-- ----------------------------
+INSERT INTO `myshare_pic` VALUES (1, 1, 'http://127.0.0.1:7001/public/share/1.jpg');
+INSERT INTO `myshare_pic` VALUES (2, 2, 'http://127.0.0.1:7001/public/share/2.jpg');
+INSERT INTO `myshare_pic` VALUES (3, 2, 'http://127.0.0.1:7001/public/share/3.jpg');
+INSERT INTO `myshare_pic` VALUES (4, 2, 'http://127.0.0.1:7001/public/share/4.jpg');
+INSERT INTO `myshare_pic` VALUES (5, 2, 'http://127.0.0.1:7001/public/share/5.jpg');
 
 -- ----------------------------
 -- Table structure for myuser
@@ -166,30 +205,6 @@ INSERT INTO `myuser` VALUES (7, '四月豆', '123', 'http://127.0.0.1:7001/publi
 INSERT INTO `myuser` VALUES (8, '我是大梦梦', '123', 'http://127.0.0.1:7001/public/userPic/8.jpg', 'hhh@163.com', '四川自贡', '7777');
 
 -- ----------------------------
--- Table structure for share
--- ----------------------------
-DROP TABLE IF EXISTS `share`;
-CREATE TABLE `share`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NULL DEFAULT NULL COMMENT '发表用户',
-  `title` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '动态标题',
-  `content` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '动态内容',
-  `prodate` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '发表时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Table structure for share_pic
--- ----------------------------
-DROP TABLE IF EXISTS `share_pic`;
-CREATE TABLE `share_pic`  (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `shareId` int(11) NULL DEFAULT NULL COMMENT '动态id',
-  `image` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '动态图片',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
--- ----------------------------
 -- Table structure for slider
 -- ----------------------------
 DROP TABLE IF EXISTS `slider`;
@@ -209,5 +224,305 @@ INSERT INTO `slider` VALUES (3, 'http://127.0.0.1:7001/public/slider/slider_03.j
 INSERT INTO `slider` VALUES (4, 'http://127.0.0.1:7001/public/slider/slider_04.jpg', 'https://www.meishichina.com/mofang/qingfeishiwu/#hmsr=www&hmpl=index&hmcu=magic&hmkw=D3&hmci=89020');
 INSERT INTO `slider` VALUES (5, 'http://127.0.0.1:7001/public/slider/slider_05.jpg', 'https://www.meishichina.com/mofang/mogudezuofadaquan/#hmsr=www&hmpl=index&hmcu=magic&hmkw=D4&hmci=86243');
 INSERT INTO `slider` VALUES (6, 'http://127.0.0.1:7001/public/slider/slider_06.jpg', 'https://www.meishichina.com/mofang/malaxiaolongxia/#hmsr=www&hmpl=index&hmcu=magic&hmkw=D5&hmci=85191');
+
+-- ----------------------------
+-- Table structure for types
+-- ----------------------------
+DROP TABLE IF EXISTS `types`;
+CREATE TABLE `types`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `typename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类名称',
+  `part` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分区名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 267 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of types
+-- ----------------------------
+INSERT INTO `types` VALUES (1, '热菜', '常见菜式');
+INSERT INTO `types` VALUES (2, '凉菜', '常见菜式');
+INSERT INTO `types` VALUES (3, '汤羹', '常见菜式');
+INSERT INTO `types` VALUES (4, '主食', '常见菜式');
+INSERT INTO `types` VALUES (5, '小吃', '常见菜式');
+INSERT INTO `types` VALUES (6, '家常菜', '常见菜式');
+INSERT INTO `types` VALUES (7, '泡酱腌菜', '常见菜式');
+INSERT INTO `types` VALUES (8, '西餐', '常见菜式');
+INSERT INTO `types` VALUES (9, '烘焙', '常见菜式');
+INSERT INTO `types` VALUES (10, '烤箱菜', '常见菜式');
+INSERT INTO `types` VALUES (11, '饮品', '常见菜式');
+INSERT INTO `types` VALUES (12, '零食', '常见菜式');
+INSERT INTO `types` VALUES (13, '火锅', '常见菜式');
+INSERT INTO `types` VALUES (14, '自制食材', '常见菜式');
+INSERT INTO `types` VALUES (15, '海鲜', '常见菜式');
+INSERT INTO `types` VALUES (16, '宴客菜', '常见菜式');
+INSERT INTO `types` VALUES (17, '米饭', '主食/小吃');
+INSERT INTO `types` VALUES (18, '炒饭', '主食/小吃');
+INSERT INTO `types` VALUES (19, '面食', '主食/小吃');
+INSERT INTO `types` VALUES (20, '包子', '主食/小吃');
+INSERT INTO `types` VALUES (21, '饺子', '主食/小吃');
+INSERT INTO `types` VALUES (22, '馒头花卷', '主食/小吃');
+INSERT INTO `types` VALUES (23, '面条', '主食/小吃');
+INSERT INTO `types` VALUES (24, '饼', '主食/小吃');
+INSERT INTO `types` VALUES (25, '粥', '主食/小吃');
+INSERT INTO `types` VALUES (26, '混沌', '主食/小吃');
+INSERT INTO `types` VALUES (27, '五谷杂粮', '主食/小吃');
+INSERT INTO `types` VALUES (28, '北京小吃', '主食/小吃');
+INSERT INTO `types` VALUES (29, '陕西小吃', '主食/小吃');
+INSERT INTO `types` VALUES (30, '广东小吃', '主食/小吃');
+INSERT INTO `types` VALUES (31, '四川小吃', '主食/小吃');
+INSERT INTO `types` VALUES (32, '重庆小吃', '主食/小吃');
+INSERT INTO `types` VALUES (33, '天津小吃', '主食/小吃');
+INSERT INTO `types` VALUES (34, '上海小吃', '主食/小吃');
+INSERT INTO `types` VALUES (35, '福建小吃', '主食/小吃');
+INSERT INTO `types` VALUES (36, '湖南小吃', '主食/小吃');
+INSERT INTO `types` VALUES (37, '湖北小吃', '主食/小吃');
+INSERT INTO `types` VALUES (38, '江西小吃', '主食/小吃');
+INSERT INTO `types` VALUES (39, '山东小吃', '主食/小吃');
+INSERT INTO `types` VALUES (40, '山西小吃', '主食/小吃');
+INSERT INTO `types` VALUES (41, '河南小吃', '主食/小吃');
+INSERT INTO `types` VALUES (42, '台湾小吃', '主食/小吃');
+INSERT INTO `types` VALUES (43, '江浙小吃', '主食/小吃');
+INSERT INTO `types` VALUES (44, '云贵小吃', '主食/小吃');
+INSERT INTO `types` VALUES (45, '东北小吃', '主食/小吃');
+INSERT INTO `types` VALUES (46, '西北小吃', '主食/小吃');
+INSERT INTO `types` VALUES (47, '甜品', '甜品/饮品');
+INSERT INTO `types` VALUES (48, '冰品', '甜品/饮品');
+INSERT INTO `types` VALUES (49, '果汁', '甜品/饮品');
+INSERT INTO `types` VALUES (50, '糖水', '甜品/饮品');
+INSERT INTO `types` VALUES (51, '布丁', '甜品/饮品');
+INSERT INTO `types` VALUES (52, '果酱', '甜品/饮品');
+INSERT INTO `types` VALUES (53, '果冻', '甜品/饮品');
+INSERT INTO `types` VALUES (54, '酸奶', '甜品/饮品');
+INSERT INTO `types` VALUES (55, '鸡尾酒', '甜品/饮品');
+INSERT INTO `types` VALUES (56, '咖啡', '甜品/饮品');
+INSERT INTO `types` VALUES (57, '豆浆', '甜品/饮品');
+INSERT INTO `types` VALUES (58, '奶昔', '甜品/饮品');
+INSERT INTO `types` VALUES (59, '冰淇淋', '甜品/饮品');
+INSERT INTO `types` VALUES (60, '孕妇', '适宜人群');
+INSERT INTO `types` VALUES (61, '产妇', '适宜人群');
+INSERT INTO `types` VALUES (62, '婴儿', '适宜人群');
+INSERT INTO `types` VALUES (63, '儿童', '适宜人群');
+INSERT INTO `types` VALUES (64, '老人', '适宜人群');
+INSERT INTO `types` VALUES (65, '幼儿', '适宜人群');
+INSERT INTO `types` VALUES (66, '哺乳期', '适宜人群');
+INSERT INTO `types` VALUES (67, '青少年', '适宜人群');
+INSERT INTO `types` VALUES (68, '健康食谱', '食疗食补');
+INSERT INTO `types` VALUES (69, '减肥瘦身', '食疗食补');
+INSERT INTO `types` VALUES (70, '贫血', '食疗食补');
+INSERT INTO `types` VALUES (71, '痛经', '食疗食补');
+INSERT INTO `types` VALUES (72, '清热祛火', '食疗食补');
+INSERT INTO `types` VALUES (73, '滋阴', '食疗食补');
+INSERT INTO `types` VALUES (74, '壮阳', '食疗食补');
+INSERT INTO `types` VALUES (75, '便秘', '食疗食补');
+INSERT INTO `types` VALUES (76, '排毒养颜', '食疗食补');
+INSERT INTO `types` VALUES (77, '滋润补水', '食疗食补');
+INSERT INTO `types` VALUES (78, '健脾养胃', '食疗食补');
+INSERT INTO `types` VALUES (79, '护肝明目', '食疗食补');
+INSERT INTO `types` VALUES (80, '清肺止咳', '食疗食补');
+INSERT INTO `types` VALUES (81, '下奶', '食疗食补');
+INSERT INTO `types` VALUES (82, '补钙', '食疗食补');
+INSERT INTO `types` VALUES (83, '醒酒', '食疗食补');
+INSERT INTO `types` VALUES (84, '抗过敏', '食疗食补');
+INSERT INTO `types` VALUES (85, '防辐射', '食疗食补');
+INSERT INTO `types` VALUES (86, '提高免疫力', '食疗食补');
+INSERT INTO `types` VALUES (87, '流感', '食疗食补');
+INSERT INTO `types` VALUES (88, '驱寒暖身', '食疗食补');
+INSERT INTO `types` VALUES (89, '秋冬进补', '食疗食补');
+INSERT INTO `types` VALUES (90, '消暑解渴', '食疗食补');
+INSERT INTO `types` VALUES (91, '早餐', '场景');
+INSERT INTO `types` VALUES (92, '下午茶', '场景');
+INSERT INTO `types` VALUES (93, '二人世界', '场景');
+INSERT INTO `types` VALUES (94, '野餐', '场景');
+INSERT INTO `types` VALUES (95, '开胃菜', '场景');
+INSERT INTO `types` VALUES (96, '私房菜', '场景');
+INSERT INTO `types` VALUES (97, '快餐', '场景');
+INSERT INTO `types` VALUES (98, '快手菜', '场景');
+INSERT INTO `types` VALUES (99, '宿舍时代', '场景');
+INSERT INTO `types` VALUES (100, '中式宴请', '场景');
+INSERT INTO `types` VALUES (101, '西式宴请', '场景');
+INSERT INTO `types` VALUES (102, '素食', '饮食方式');
+INSERT INTO `types` VALUES (103, '素菜', '饮食方式');
+INSERT INTO `types` VALUES (104, '清真菜', '饮食方式');
+INSERT INTO `types` VALUES (105, '春季食谱', '饮食方式');
+INSERT INTO `types` VALUES (106, '夏季食谱', '饮食方式');
+INSERT INTO `types` VALUES (107, '秋季食谱', '饮食方式');
+INSERT INTO `types` VALUES (108, '冬季食谱', '饮食方式');
+INSERT INTO `types` VALUES (109, '小清晰', '饮食方式');
+INSERT INTO `types` VALUES (110, '高颜值', '饮食方式');
+INSERT INTO `types` VALUES (111, '蛋糕', '烘焙');
+INSERT INTO `types` VALUES (112, '面包', '烘焙');
+INSERT INTO `types` VALUES (113, '饼干', '烘焙');
+INSERT INTO `types` VALUES (114, '派塔', '烘焙');
+INSERT INTO `types` VALUES (115, '吐司', '烘焙');
+INSERT INTO `types` VALUES (116, '戚风蛋糕', '烘焙');
+INSERT INTO `types` VALUES (117, '纸杯蛋糕', '烘焙');
+INSERT INTO `types` VALUES (118, '蛋糕卷', '烘焙');
+INSERT INTO `types` VALUES (119, '玛芬蛋糕', '烘焙');
+INSERT INTO `types` VALUES (120, '乳酪蛋糕', '烘焙');
+INSERT INTO `types` VALUES (121, '芝士蛋糕', '烘焙');
+INSERT INTO `types` VALUES (122, '奶油蛋糕', '烘焙');
+INSERT INTO `types` VALUES (123, '披萨', '烘焙');
+INSERT INTO `types` VALUES (124, '慕斯', '烘焙');
+INSERT INTO `types` VALUES (125, '曲奇', '烘焙');
+INSERT INTO `types` VALUES (126, '翻糖', '烘焙');
+INSERT INTO `types` VALUES (127, '粽子', '传统美食');
+INSERT INTO `types` VALUES (128, '月饼', '传统美食');
+INSERT INTO `types` VALUES (129, '春饼', '传统美食');
+INSERT INTO `types` VALUES (130, '元宵', '传统美食');
+INSERT INTO `types` VALUES (131, '汤圆', '传统美食');
+INSERT INTO `types` VALUES (132, '青团', '传统美食');
+INSERT INTO `types` VALUES (133, '腊八粥', '传统美食');
+INSERT INTO `types` VALUES (134, '春卷', '传统美食');
+INSERT INTO `types` VALUES (136, '立冬', '节日食俗');
+INSERT INTO `types` VALUES (137, '冬至', '节日食俗');
+INSERT INTO `types` VALUES (138, '腊八', '节日食俗');
+INSERT INTO `types` VALUES (139, '端午节', '节日食俗');
+INSERT INTO `types` VALUES (140, '中秋', '节日食俗');
+INSERT INTO `types` VALUES (141, '立春', '节日食俗');
+INSERT INTO `types` VALUES (142, '元宵节', '节日食俗');
+INSERT INTO `types` VALUES (143, '贴秋膘', '节日食俗');
+INSERT INTO `types` VALUES (144, '清明', '节日食俗');
+INSERT INTO `types` VALUES (145, '年夜饭', '节日食俗');
+INSERT INTO `types` VALUES (146, '圣诞节', '节日食俗');
+INSERT INTO `types` VALUES (147, '感恩节', '节日食俗');
+INSERT INTO `types` VALUES (148, '万圣节', '节日食俗');
+INSERT INTO `types` VALUES (149, '情人节', '节日食俗');
+INSERT INTO `types` VALUES (150, '复活节', '节日食俗');
+INSERT INTO `types` VALUES (151, '雨水', '节日食俗');
+INSERT INTO `types` VALUES (152, '惊蛰', '节日食俗');
+INSERT INTO `types` VALUES (153, '春分', '节日食俗');
+INSERT INTO `types` VALUES (154, '谷雨', '节日食俗');
+INSERT INTO `types` VALUES (155, '立夏', '节日食俗');
+INSERT INTO `types` VALUES (156, '小满', '节日食俗');
+INSERT INTO `types` VALUES (157, '芒种', '节日食俗');
+INSERT INTO `types` VALUES (158, '夏至', '节日食俗');
+INSERT INTO `types` VALUES (159, '小暑', '节日食俗');
+INSERT INTO `types` VALUES (160, '大暑', '节日食俗');
+INSERT INTO `types` VALUES (161, '立秋', '节日食俗');
+INSERT INTO `types` VALUES (162, '处暑', '节日食俗');
+INSERT INTO `types` VALUES (163, '白露', '节日食俗');
+INSERT INTO `types` VALUES (164, '秋分', '节日食俗');
+INSERT INTO `types` VALUES (165, '寒露', '节日食俗');
+INSERT INTO `types` VALUES (166, '霜降', '节日食俗');
+INSERT INTO `types` VALUES (167, '小雪', '节日食俗');
+INSERT INTO `types` VALUES (168, '大雪', '节日食俗');
+INSERT INTO `types` VALUES (169, '小寒', '节日食俗');
+INSERT INTO `types` VALUES (170, '大寒', '节日食俗');
+INSERT INTO `types` VALUES (171, '二月二', '节日食俗');
+INSERT INTO `types` VALUES (172, '母亲节', '节日食俗');
+INSERT INTO `types` VALUES (173, '父亲节', '节日食俗');
+INSERT INTO `types` VALUES (174, '儿童节', '节日食俗');
+INSERT INTO `types` VALUES (175, '七夕', '节日食俗');
+INSERT INTO `types` VALUES (176, '重阳节', '节日食俗');
+INSERT INTO `types` VALUES (177, '十分钟', '按所需时间');
+INSERT INTO `types` VALUES (178, '廿分钟', '按所需时间');
+INSERT INTO `types` VALUES (179, '半小时', '按所需时间');
+INSERT INTO `types` VALUES (180, '三刻钟', '按所需时间');
+INSERT INTO `types` VALUES (181, '—小时', '按所需时间');
+INSERT INTO `types` VALUES (182, '数小时', '按所需时间');
+INSERT INTO `types` VALUES (183, '一天', '按所需时间');
+INSERT INTO `types` VALUES (184, '数天', '按所需时间');
+INSERT INTO `types` VALUES (185, '微辣', '按菜品口味');
+INSERT INTO `types` VALUES (186, '中辣', '按菜品口味');
+INSERT INTO `types` VALUES (187, '超辣', '按菜品口味');
+INSERT INTO `types` VALUES (188, '麻辣', '按菜品口味');
+INSERT INTO `types` VALUES (189, '酸辣', '按菜品口味');
+INSERT INTO `types` VALUES (190, '甜辣', '按菜品口味');
+INSERT INTO `types` VALUES (191, '香辣', '按菜品口味');
+INSERT INTO `types` VALUES (203, '酸甜', '按菜品口味');
+INSERT INTO `types` VALUES (204, '酸咸', '按菜品口味');
+INSERT INTO `types` VALUES (205, '咸鲜', '按菜品口味');
+INSERT INTO `types` VALUES (206, '咸甜', '按菜品口味');
+INSERT INTO `types` VALUES (207, '甜味', '按菜品口味');
+INSERT INTO `types` VALUES (208, '苦味', '按菜品口味');
+INSERT INTO `types` VALUES (209, '原味', '按菜品口味');
+INSERT INTO `types` VALUES (210, '清淡', '按菜品口味');
+INSERT INTO `types` VALUES (211, '五香', '按菜品口味');
+INSERT INTO `types` VALUES (212, '鱼香', '按菜品口味');
+INSERT INTO `types` VALUES (213, '葱香', '按菜品口味');
+INSERT INTO `types` VALUES (214, '蒜香', '按菜品口味');
+INSERT INTO `types` VALUES (215, '奶香', '按菜品口味');
+INSERT INTO `types` VALUES (216, '酱香', '按菜品口味');
+INSERT INTO `types` VALUES (217, '糟香', '按菜品口味');
+INSERT INTO `types` VALUES (218, '咖喱', '按菜品口味');
+INSERT INTO `types` VALUES (219, '孜然', '按菜品口味');
+INSERT INTO `types` VALUES (220, '果味', '按菜品口味');
+INSERT INTO `types` VALUES (221, '香草', '按菜品口味');
+INSERT INTO `types` VALUES (222, '怪味', '按菜品口味');
+INSERT INTO `types` VALUES (223, '咸香', '按菜品口味');
+INSERT INTO `types` VALUES (224, '甜香', '按菜品口味');
+INSERT INTO `types` VALUES (225, '麻香', '按菜品口味');
+INSERT INTO `types` VALUES (226, '其他', '按菜品口味');
+INSERT INTO `types` VALUES (227, '烧', '按主要工艺');
+INSERT INTO `types` VALUES (228, '炒', '按主要工艺');
+INSERT INTO `types` VALUES (229, '爆', '按主要工艺');
+INSERT INTO `types` VALUES (230, '焖', '按主要工艺');
+INSERT INTO `types` VALUES (231, '炖', '按主要工艺');
+INSERT INTO `types` VALUES (232, '蒸', '按主要工艺');
+INSERT INTO `types` VALUES (233, '煮', '按主要工艺');
+INSERT INTO `types` VALUES (234, '拌', '按主要工艺');
+INSERT INTO `types` VALUES (235, '烤', '按主要工艺');
+INSERT INTO `types` VALUES (236, '炸', '按主要工艺');
+INSERT INTO `types` VALUES (237, '烩', '按主要工艺');
+INSERT INTO `types` VALUES (238, '溜', '按主要工艺');
+INSERT INTO `types` VALUES (239, '余', '按主要工艺');
+INSERT INTO `types` VALUES (240, '腌', '按主要工艺');
+INSERT INTO `types` VALUES (241, '卤', '按主要工艺');
+INSERT INTO `types` VALUES (242, '怆', '按主要工艺');
+INSERT INTO `types` VALUES (243, '煎', '按主要工艺');
+INSERT INTO `types` VALUES (244, '酥', '按主要工艺');
+INSERT INTO `types` VALUES (245, '扒', '按主要工艺');
+INSERT INTO `types` VALUES (246, '熏', '按主要工艺');
+INSERT INTO `types` VALUES (247, '煨', '按主要工艺');
+INSERT INTO `types` VALUES (248, '酱', '按主要工艺');
+INSERT INTO `types` VALUES (249, '煲', '按主要工艺');
+INSERT INTO `types` VALUES (250, '烘焙', '按主要工艺');
+INSERT INTO `types` VALUES (251, '火锅', '按主要工艺');
+INSERT INTO `types` VALUES (252, '砂锅', '按主要工艺');
+INSERT INTO `types` VALUES (253, '拔丝', '按主要工艺');
+INSERT INTO `types` VALUES (254, '生鲜', '按主要工艺');
+INSERT INTO `types` VALUES (255, '调味', '按主要工艺');
+INSERT INTO `types` VALUES (256, '技巧', '按主要工艺');
+INSERT INTO `types` VALUES (257, '烙', '按主要工艺');
+INSERT INTO `types` VALUES (258, '榨汁', '按主要工艺');
+INSERT INTO `types` VALUES (259, '冷冻', '按主要工艺');
+INSERT INTO `types` VALUES (260, '焗', '按主要工艺');
+INSERT INTO `types` VALUES (261, '焯', '按主要工艺');
+INSERT INTO `types` VALUES (262, '干煽', '按主要工艺');
+INSERT INTO `types` VALUES (263, '干锅', '按主要工艺');
+INSERT INTO `types` VALUES (264, '铁板', '按主要工艺');
+INSERT INTO `types` VALUES (265, '微波', '按主要工艺');
+INSERT INTO `types` VALUES (266, '其他', '按主要工艺');
+
+-- ----------------------------
+-- Table structure for types_food
+-- ----------------------------
+DROP TABLE IF EXISTS `types_food`;
+CREATE TABLE `types_food`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `eatablesId` int(11) NULL DEFAULT NULL COMMENT '菜谱 id',
+  `typesId` int(11) NULL DEFAULT NULL COMMENT '分类 id',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of types_food
+-- ----------------------------
+INSERT INTO `types_food` VALUES (1, 1, 1);
+INSERT INTO `types_food` VALUES (2, 2, 1);
+INSERT INTO `types_food` VALUES (3, 3, 1);
+INSERT INTO `types_food` VALUES (4, 4, 1);
+INSERT INTO `types_food` VALUES (5, 5, 1);
+INSERT INTO `types_food` VALUES (6, 6, 1);
+INSERT INTO `types_food` VALUES (7, 7, 1);
+INSERT INTO `types_food` VALUES (8, 8, 1);
+INSERT INTO `types_food` VALUES (9, 9, 1);
+INSERT INTO `types_food` VALUES (10, 10, 1);
+INSERT INTO `types_food` VALUES (11, 11, 1);
+INSERT INTO `types_food` VALUES (12, 12, 1);
+INSERT INTO `types_food` VALUES (13, 13, 1);
+INSERT INTO `types_food` VALUES (14, 14, 1);
+INSERT INTO `types_food` VALUES (15, 15, 1);
+INSERT INTO `types_food` VALUES (16, 16, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

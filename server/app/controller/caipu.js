@@ -3,9 +3,14 @@
 const Controller = require("egg").Controller;
 
 class CaipuController extends Controller {
+  // 菜谱首页
   async index() {
     const { ctx } = this;
-    ctx.body = "hi, egg";
+    if (ctx.request.query.status == 0) {
+      // 初加载
+      let res = await this.ctx.service.caipu.index();
+      ctx.body = res;
+    }
   }
 }
 

@@ -16,6 +16,25 @@ const routes = [
     name: "CaiPu",
     component: () => import("../views/CaiPu.vue"),
   },
+  {
+    // 登录注册
+    path: "/MyUser",
+    name: "MyUser",
+    component: () => import("../views/MyUser.vue"),
+    redirect: "/MyUser/Login",
+    children: [
+      {
+        path: "Login",
+        name: "Login",
+        component: () => import("@/components/MyUser/Login.vue"),
+      },
+      {
+        path: "Register",
+        name: "Register",
+        component: () => import("@/components/MyUser/Register.vue"),
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
