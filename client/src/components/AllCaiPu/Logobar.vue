@@ -4,7 +4,7 @@
 
     <div class="logoNav">
       <router-link
-        :class="i == 0 ? 'actived' : ''"
+        :class="i == 1 ? 'actived' : ''"
         :to="el.navUrl"
         v-for="(el, i) in navItem"
         :key="el.title"
@@ -17,6 +17,8 @@
       <input type="text" />
       <router-link to="##">搜索</router-link>
     </div>
+
+    <div class="partTag">菜谱</div>
   </div>
 </template>
 
@@ -130,5 +132,25 @@ export default {
 
 .actived {
   color: #ff6767 !important;
+}
+
+.partTag {
+  position: absolute;
+  top: 24px;
+  left: 120px;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 4px;
+  font-size: 20px;
+  line-height: 30px;
+  text-decoration: none;
+  color: #fff;
+  user-select: none;
+  background-color: #ff838b;
+  cursor: pointer;
+}
+
+.partTag:hover {
+  background-color: #ff6767;
 }
 </style>

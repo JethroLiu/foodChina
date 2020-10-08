@@ -11,7 +11,7 @@
  Target Server Version : 50173
  File Encoding         : 65001
 
- Date: 07/10/2020 17:27:53
+ Date: 08/10/2020 15:04:14
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `eatables`  (
   `foodname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '菜谱名称',
   `only` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '独家标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 53 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of eatables
@@ -53,6 +53,38 @@ INSERT INTO `eatables` VALUES (17, 'http://127.0.0.1:7001/public/eatables/17.jpg
 INSERT INTO `eatables` VALUES (18, 'http://127.0.0.1:7001/public/eatables/18.jpg', 1, '精品五仁月饼', '0');
 INSERT INTO `eatables` VALUES (19, 'http://127.0.0.1:7001/public/eatables/19.jpg', 1, '芝麻脆底盐可颂', '0');
 INSERT INTO `eatables` VALUES (20, 'http://127.0.0.1:7001/public/eatables/20.jpg', 1, '超简单好吃的桃酥', '0');
+INSERT INTO `eatables` VALUES (21, 'http://127.0.0.1:7001/public/eatables/21.jpg', 2, '粉丝拌鸡丝', '1');
+INSERT INTO `eatables` VALUES (22, 'http://127.0.0.1:7001/public/eatables/22.jpg', 2, '凉拌牛杂', '1');
+INSERT INTO `eatables` VALUES (23, 'http://127.0.0.1:7001/public/eatables/23.jpg', 2, '凉拌手撕鸡', '0');
+INSERT INTO `eatables` VALUES (24, 'http://127.0.0.1:7001/public/eatables/24.jpg', 2, '香菜拌海参', '0');
+INSERT INTO `eatables` VALUES (25, 'http://127.0.0.1:7001/public/eatables/25.jpg', 2, '卤驴肉拌眉豆', '0');
+INSERT INTO `eatables` VALUES (26, 'http://127.0.0.1:7001/public/eatables/26.jpg', 2, '黄瓜丝拌鸡丝', '1');
+INSERT INTO `eatables` VALUES (27, 'http://127.0.0.1:7001/public/eatables/27.jpg', 2, '苦瓜拌鸭肠', '1');
+INSERT INTO `eatables` VALUES (28, 'http://127.0.0.1:7001/public/eatables/28.jpg', 2, '火麻蒜肠拌蔬菜', '0');
+INSERT INTO `eatables` VALUES (29, 'http://127.0.0.1:7001/public/eatables/29.jpg', 2, '紫甘蓝拌海蛰', '0');
+INSERT INTO `eatables` VALUES (30, 'http://127.0.0.1:7001/public/eatables/30.jpg', 2, '花生米拌木耳', '1');
+INSERT INTO `eatables` VALUES (31, 'http://127.0.0.1:7001/public/eatables/31.jpg', 2, '花生米拌猪耳朵', '1');
+INSERT INTO `eatables` VALUES (32, 'http://127.0.0.1:7001/public/eatables/32.jpg', 2, '老醋花生', '0');
+INSERT INTO `eatables` VALUES (33, 'http://127.0.0.1:7001/public/eatables/33.jpg', 2, '清蒸腊耳朵', '1');
+INSERT INTO `eatables` VALUES (34, 'http://127.0.0.1:7001/public/eatables/34.jpg', 2, '蟹肉棒拌菠菜', '1');
+INSERT INTO `eatables` VALUES (35, 'http://127.0.0.1:7001/public/eatables/35.jpg', 2, '卤鸡翅膀', '1');
+INSERT INTO `eatables` VALUES (36, 'http://127.0.0.1:7001/public/eatables/36.jpg', 2, '秋葵拌木耳', '0');
+INSERT INTO `eatables` VALUES (37, 'http://127.0.0.1:7001/public/eatables/37.jpg', 3, '凉拌黄瓜', '1');
+INSERT INTO `eatables` VALUES (38, 'http://127.0.0.1:7001/public/eatables/38.jpg', 3, '凉拌金针菇', '0');
+INSERT INTO `eatables` VALUES (39, 'http://127.0.0.1:7001/public/eatables/39.jpg', 3, '香辣茄条', '0');
+INSERT INTO `eatables` VALUES (40, 'http://127.0.0.1:7001/public/eatables/40.jpg', 3, '凉拌折耳根', '1');
+INSERT INTO `eatables` VALUES (41, 'http://127.0.0.1:7001/public/eatables/41.jpg', 3, '白切肘子', '0');
+INSERT INTO `eatables` VALUES (42, 'http://127.0.0.1:7001/public/eatables/42.jpg', 3, '凉拌杏鲍菇', '1');
+INSERT INTO `eatables` VALUES (43, 'http://127.0.0.1:7001/public/eatables/43.jpg', 3, '凉拌鸡丝', '1');
+INSERT INTO `eatables` VALUES (44, 'http://127.0.0.1:7001/public/eatables/44.jpg', 3, '青萝卜拌海蜇头', '1');
+INSERT INTO `eatables` VALUES (45, 'http://127.0.0.1:7001/public/eatables/45.jpg', 3, '蒜香洋葱拌木耳', '1');
+INSERT INTO `eatables` VALUES (46, 'http://127.0.0.1:7001/public/eatables/46.jpg', 3, '凉拌黄瓜', '0');
+INSERT INTO `eatables` VALUES (47, 'http://127.0.0.1:7001/public/eatables/47.jpg', 3, '火麻仁拌穿心莲', '0');
+INSERT INTO `eatables` VALUES (48, 'http://127.0.0.1:7001/public/eatables/48.jpg', 3, '凉拌包菜丝', '0');
+INSERT INTO `eatables` VALUES (49, 'http://127.0.0.1:7001/public/eatables/49.jpg', 3, '海带丝拌小豆芽', '1');
+INSERT INTO `eatables` VALUES (50, 'http://127.0.0.1:7001/public/eatables/50.jpg', 3, '拌红薯叶', '1');
+INSERT INTO `eatables` VALUES (51, 'http://127.0.0.1:7001/public/eatables/51.jpg', 3, '皮蛋豆腐', '1');
+INSERT INTO `eatables` VALUES (52, 'http://127.0.0.1:7001/public/eatables/52.jpg', 3, '拌蒸茄子', '1');
 
 -- ----------------------------
 -- Table structure for idea
@@ -107,6 +139,227 @@ INSERT INTO `idea_topic` VALUES (15, 3, '粗粮细作：健康能量燕麦甜品
 INSERT INTO `idea_topic` VALUES (16, 3, '童趣童味，儿童创意餐点', 'https://mamapai.meishichina.com/tongqutongwei/');
 INSERT INTO `idea_topic` VALUES (17, 3, 'ACA ATO-HB38HT电烤箱', 'https://zhen.meishichina.com/26840/');
 INSERT INTO `idea_topic` VALUES (18, 3, '酒后头痛，5种食物可缓解', 'https://www.meishichina.com/mofang/huanjiejiuhoutoutengshiwu/');
+
+-- ----------------------------
+-- Table structure for maketypes
+-- ----------------------------
+DROP TABLE IF EXISTS `maketypes`;
+CREATE TABLE `maketypes`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `makename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '材料名称',
+  `part` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分区名称',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 200 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of maketypes
+-- ----------------------------
+INSERT INTO `maketypes` VALUES (1, '鸡肉', '时令与热门');
+INSERT INTO `maketypes` VALUES (2, '鸡翅', '时令与热门');
+INSERT INTO `maketypes` VALUES (3, '鸡蛋', '时令与热门');
+INSERT INTO `maketypes` VALUES (4, '牛肉', '时令与热门');
+INSERT INTO `maketypes` VALUES (5, '猪肉', '时令与热门');
+INSERT INTO `maketypes` VALUES (6, '排骨', '时令与热门');
+INSERT INTO `maketypes` VALUES (7, '小龙虾', '时令与热门');
+INSERT INTO `maketypes` VALUES (8, '皮皮虾', '时令与热门');
+INSERT INTO `maketypes` VALUES (9, '螃蟹', '时令与热门');
+INSERT INTO `maketypes` VALUES (10, '虾', '时令与热门');
+INSERT INTO `maketypes` VALUES (11, '扇贝', '时令与热门');
+INSERT INTO `maketypes` VALUES (12, '生蚝', '时令与热门');
+INSERT INTO `maketypes` VALUES (13, '黄瓜', '时令与热门');
+INSERT INTO `maketypes` VALUES (14, '茄子', '时令与热门');
+INSERT INTO `maketypes` VALUES (15, '西红柿', '时令与热门');
+INSERT INTO `maketypes` VALUES (16, '土豆', '时令与热门');
+INSERT INTO `maketypes` VALUES (17, '黑木耳', '时令与热门');
+INSERT INTO `maketypes` VALUES (18, '秋葵', '时令与热门');
+INSERT INTO `maketypes` VALUES (19, '猪肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (20, '排骨', '肉禽类');
+INSERT INTO `maketypes` VALUES (21, '里脊', '肉禽类');
+INSERT INTO `maketypes` VALUES (22, '猪蹄', '肉禽类');
+INSERT INTO `maketypes` VALUES (23, '五花肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (24, '肋排', '肉禽类');
+INSERT INTO `maketypes` VALUES (25, '牛肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (26, '牛排', '肉禽类');
+INSERT INTO `maketypes` VALUES (27, '肥牛', '肉禽类');
+INSERT INTO `maketypes` VALUES (28, '羊肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (29, '猪肝', '肉禽类');
+INSERT INTO `maketypes` VALUES (30, '猪肘', '肉禽类');
+INSERT INTO `maketypes` VALUES (31, '火腿', '肉禽类');
+INSERT INTO `maketypes` VALUES (32, '香肠', '肉禽类');
+INSERT INTO `maketypes` VALUES (33, '培根', '肉禽类');
+INSERT INTO `maketypes` VALUES (34, '腊肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (35, '肉松', '肉禽类');
+INSERT INTO `maketypes` VALUES (36, '整鸡', '肉禽类');
+INSERT INTO `maketypes` VALUES (37, '鸡肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (38, '鸡翅', '肉禽类');
+INSERT INTO `maketypes` VALUES (39, '鸡腿', '肉禽类');
+INSERT INTO `maketypes` VALUES (40, '乌鸡', '肉禽类');
+INSERT INTO `maketypes` VALUES (41, '鸭肉', '肉禽类');
+INSERT INTO `maketypes` VALUES (42, '乳鸽', '肉禽类');
+INSERT INTO `maketypes` VALUES (43, '鸡蛋', '肉禽类');
+INSERT INTO `maketypes` VALUES (44, '鸭蛋', '肉禽类');
+INSERT INTO `maketypes` VALUES (45, '鸭脖', '肉禽类');
+INSERT INTO `maketypes` VALUES (46, '鹅肝', '肉禽类');
+INSERT INTO `maketypes` VALUES (47, '鹤鹑', '肉禽类');
+INSERT INTO `maketypes` VALUES (49, '更多', '肉禽类');
+INSERT INTO `maketypes` VALUES (50, '草鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (51, '鲤鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (52, '螂鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (53, '带鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (54, '鲈鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (55, '黄花鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (56, '鳍鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (57, '皱鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (58, '鲍鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (59, '鮼鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (60, '三文鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (61, '胖头鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (62, '罗非鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (63, '秋刀鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (64, '多宝鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (65, '鱼籽', '水产品类');
+INSERT INTO `maketypes` VALUES (66, '鱼尾', '水产品类');
+INSERT INTO `maketypes` VALUES (67, '鱼丸', '水产品类');
+INSERT INTO `maketypes` VALUES (68, '小龙虾', '水产品类');
+INSERT INTO `maketypes` VALUES (69, '虾', '水产品类');
+INSERT INTO `maketypes` VALUES (70, '龙虾', '水产品类');
+INSERT INTO `maketypes` VALUES (71, '螃蟹', '水产品类');
+INSERT INTO `maketypes` VALUES (72, '大闸蟹', '水产品类');
+INSERT INTO `maketypes` VALUES (73, '皮皮虾', '水产品类');
+INSERT INTO `maketypes` VALUES (74, '牡蛎', '水产品类');
+INSERT INTO `maketypes` VALUES (75, '扇贝', '水产品类');
+INSERT INTO `maketypes` VALUES (76, '生蚝', '水产品类');
+INSERT INTO `maketypes` VALUES (77, '蛤蛹', '水产品类');
+INSERT INTO `maketypes` VALUES (78, '峄子', '水产品类');
+INSERT INTO `maketypes` VALUES (79, '海蜇', '水产品类');
+INSERT INTO `maketypes` VALUES (80, '鱿鱼', '水产品类');
+INSERT INTO `maketypes` VALUES (81, '海参', '水产品类');
+INSERT INTO `maketypes` VALUES (82, '海带', '水产品类');
+INSERT INTO `maketypes` VALUES (83, '紫菜', '水产品类');
+INSERT INTO `maketypes` VALUES (84, '更多', '水产品类');
+INSERT INTO `maketypes` VALUES (85, '白菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (86, '油菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (87, '青菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (88, '芹菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (89, '菠菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (90, '韭菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (91, '大白菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (92, '娃娃菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (93, '芦蒿', '蔬菜类');
+INSERT INTO `maketypes` VALUES (94, '莴笋', '蔬菜类');
+INSERT INTO `maketypes` VALUES (95, '油麦菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (96, '芦笋', '蔬菜类');
+INSERT INTO `maketypes` VALUES (97, '士豆', '蔬菜类');
+INSERT INTO `maketypes` VALUES (98, '红薯', '蔬菜类');
+INSERT INTO `maketypes` VALUES (99, '芋头', '蔬菜类');
+INSERT INTO `maketypes` VALUES (100, '洋葱', '蔬菜类');
+INSERT INTO `maketypes` VALUES (101, '萝卜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (102, '山药', '蔬菜类');
+INSERT INTO `maketypes` VALUES (103, '西红柿', '蔬菜类');
+INSERT INTO `maketypes` VALUES (104, '藕', '蔬菜类');
+INSERT INTO `maketypes` VALUES (105, '豆角', '蔬菜类');
+INSERT INTO `maketypes` VALUES (106, '茄子', '蔬菜类');
+INSERT INTO `maketypes` VALUES (107, '青椒', '蔬菜类');
+INSERT INTO `maketypes` VALUES (108, '菜花', '蔬菜类');
+INSERT INTO `maketypes` VALUES (109, '虹豆', '蔬菜类');
+INSERT INTO `maketypes` VALUES (110, '秋葵', '蔬菜类');
+INSERT INTO `maketypes` VALUES (111, '毛豆', '蔬菜类');
+INSERT INTO `maketypes` VALUES (112, '四季豆', '蔬菜类');
+INSERT INTO `maketypes` VALUES (113, '黄瓜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (114, '冬瓜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (115, '西葫芦', '蔬菜类');
+INSERT INTO `maketypes` VALUES (116, '黑木耳', '蔬菜类');
+INSERT INTO `maketypes` VALUES (117, '蘑菇', '蔬菜类');
+INSERT INTO `maketypes` VALUES (118, '香菇', '蔬菜类');
+INSERT INTO `maketypes` VALUES (119, '金针菇', '蔬菜类');
+INSERT INTO `maketypes` VALUES (120, '杏鲍菇', '蔬菜类');
+INSERT INTO `maketypes` VALUES (121, '茭白', '蔬菜类');
+INSERT INTO `maketypes` VALUES (122, '竹笋', '蔬菜类');
+INSERT INTO `maketypes` VALUES (123, '荠菜', '蔬菜类');
+INSERT INTO `maketypes` VALUES (124, '香椿', '蔬菜类');
+INSERT INTO `maketypes` VALUES (125, '马兰头', '蔬菜类');
+INSERT INTO `maketypes` VALUES (127, '更多', '蔬菜类');
+INSERT INTO `maketypes` VALUES (128, '菠萝', '果品类');
+INSERT INTO `maketypes` VALUES (129, '草莓', '果品类');
+INSERT INTO `maketypes` VALUES (130, '芒果', '果品类');
+INSERT INTO `maketypes` VALUES (131, '木瓜', '果品类');
+INSERT INTO `maketypes` VALUES (132, '牛油果', '果品类');
+INSERT INTO `maketypes` VALUES (133, '百香果', '果品类');
+INSERT INTO `maketypes` VALUES (134, '栗子', '果品类');
+INSERT INTO `maketypes` VALUES (135, '花生', '果品类');
+INSERT INTO `maketypes` VALUES (136, '腰果', '果品类');
+INSERT INTO `maketypes` VALUES (137, '核桃', '果品类');
+INSERT INTO `maketypes` VALUES (138, '芝麻', '果品类');
+INSERT INTO `maketypes` VALUES (139, '莲子', '果品类');
+INSERT INTO `maketypes` VALUES (140, '枸杞', '果品类');
+INSERT INTO `maketypes` VALUES (141, '桂圆', '果品类');
+INSERT INTO `maketypes` VALUES (142, '黑芝麻', '果品类');
+INSERT INTO `maketypes` VALUES (143, '红枣', '果品类');
+INSERT INTO `maketypes` VALUES (144, '蓝莓', '果品类');
+INSERT INTO `maketypes` VALUES (145, '更多', '果品类');
+INSERT INTO `maketypes` VALUES (146, '糯米', '米面豆乳');
+INSERT INTO `maketypes` VALUES (147, '小米', '米面豆乳');
+INSERT INTO `maketypes` VALUES (148, '荞麦米', '米面豆乳');
+INSERT INTO `maketypes` VALUES (149, '玉米', '米面豆乳');
+INSERT INTO `maketypes` VALUES (150, '燕麦', '米面豆乳');
+INSERT INTO `maketypes` VALUES (151, '米粉', '米面豆乳');
+INSERT INTO `maketypes` VALUES (152, '面条', '米面豆乳');
+INSERT INTO `maketypes` VALUES (153, '意大利面', '米面豆乳');
+INSERT INTO `maketypes` VALUES (154, '糯米粉', '米面豆乳');
+INSERT INTO `maketypes` VALUES (155, '红豆', '米面豆乳');
+INSERT INTO `maketypes` VALUES (156, '绿豆', '米面豆乳');
+INSERT INTO `maketypes` VALUES (157, '黄豆', '米面豆乳');
+INSERT INTO `maketypes` VALUES (158, '豆腐', '米面豆乳');
+INSERT INTO `maketypes` VALUES (159, '豆浆', '米面豆乳');
+INSERT INTO `maketypes` VALUES (160, '腐竹', '米面豆乳');
+INSERT INTO `maketypes` VALUES (161, '油豆腐', '米面豆乳');
+INSERT INTO `maketypes` VALUES (162, '烤麸', '米面豆乳');
+INSERT INTO `maketypes` VALUES (163, '豆皮', '米面豆乳');
+INSERT INTO `maketypes` VALUES (164, '淡奶油', '米面豆乳');
+INSERT INTO `maketypes` VALUES (165, '奶酪', '米面豆乳');
+INSERT INTO `maketypes` VALUES (166, '酸奶', '米面豆乳');
+INSERT INTO `maketypes` VALUES (167, '牛奶', '米面豆乳');
+INSERT INTO `maketypes` VALUES (168, '芝士', '米面豆乳');
+INSERT INTO `maketypes` VALUES (169, '巧克力', '米面豆乳');
+INSERT INTO `maketypes` VALUES (170, '粉皮', '米面豆乳');
+INSERT INTO `maketypes` VALUES (171, '粉丝', '米面豆乳');
+INSERT INTO `maketypes` VALUES (172, '年糕', '米面豆乳');
+INSERT INTO `maketypes` VALUES (173, '粉条', '米面豆乳');
+INSERT INTO `maketypes` VALUES (174, '河粉', '米面豆乳');
+INSERT INTO `maketypes` VALUES (175, '更多', '米面豆乳');
+INSERT INTO `maketypes` VALUES (176, '番茄酱', '调味品');
+INSERT INTO `maketypes` VALUES (177, '番茄沙司', '调味品');
+INSERT INTO `maketypes` VALUES (178, '豆瓣酱', '调味品');
+INSERT INTO `maketypes` VALUES (179, '豆瓣', '调味品');
+INSERT INTO `maketypes` VALUES (180, '豆豉', '调味品');
+INSERT INTO `maketypes` VALUES (181, '芥末酱', '调味品');
+INSERT INTO `maketypes` VALUES (182, '蜂蜜', '调味品');
+INSERT INTO `maketypes` VALUES (183, '醪糟', '调味品');
+INSERT INTO `maketypes` VALUES (184, '酱油', '调味品');
+INSERT INTO `maketypes` VALUES (185, '鸡精', '调味品');
+INSERT INTO `maketypes` VALUES (186, '干黄酱', '调味品');
+INSERT INTO `maketypes` VALUES (187, '更多', '调味品');
+INSERT INTO `maketypes` VALUES (188, '燕窝', '药食');
+INSERT INTO `maketypes` VALUES (189, '阿胶', '药食');
+INSERT INTO `maketypes` VALUES (190, '雪蛤', '药食');
+INSERT INTO `maketypes` VALUES (191, '茯苓', '药食');
+INSERT INTO `maketypes` VALUES (192, '党参', '药食');
+INSERT INTO `maketypes` VALUES (193, '当归', '药食');
+INSERT INTO `maketypes` VALUES (194, '银耳', '药食');
+INSERT INTO `maketypes` VALUES (195, '枣', '药食');
+INSERT INTO `maketypes` VALUES (196, '百合', '药食');
+INSERT INTO `maketypes` VALUES (197, '黄芪', '药食');
+INSERT INTO `maketypes` VALUES (198, '花胶', '药食');
+INSERT INTO `maketypes` VALUES (199, '更多', '药食');
+
+-- ----------------------------
+-- Table structure for maketypes_food
+-- ----------------------------
+DROP TABLE IF EXISTS `maketypes_food`;
+CREATE TABLE `maketypes_food`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for makeup
@@ -503,7 +756,7 @@ CREATE TABLE `types_food`  (
   `eatablesId` int(11) NULL DEFAULT NULL COMMENT '菜谱 id',
   `typesId` int(11) NULL DEFAULT NULL COMMENT '分类 id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of types_food
@@ -524,5 +777,41 @@ INSERT INTO `types_food` VALUES (13, 13, 1);
 INSERT INTO `types_food` VALUES (14, 14, 1);
 INSERT INTO `types_food` VALUES (15, 15, 1);
 INSERT INTO `types_food` VALUES (16, 16, 1);
+INSERT INTO `types_food` VALUES (18, 17, 2);
+INSERT INTO `types_food` VALUES (19, 18, 2);
+INSERT INTO `types_food` VALUES (20, 19, 2);
+INSERT INTO `types_food` VALUES (21, 20, 2);
+INSERT INTO `types_food` VALUES (22, 21, 2);
+INSERT INTO `types_food` VALUES (23, 22, 2);
+INSERT INTO `types_food` VALUES (24, 23, 2);
+INSERT INTO `types_food` VALUES (25, 24, 2);
+INSERT INTO `types_food` VALUES (26, 25, 2);
+INSERT INTO `types_food` VALUES (27, 26, 2);
+INSERT INTO `types_food` VALUES (28, 27, 2);
+INSERT INTO `types_food` VALUES (29, 28, 2);
+INSERT INTO `types_food` VALUES (30, 29, 2);
+INSERT INTO `types_food` VALUES (31, 30, 2);
+INSERT INTO `types_food` VALUES (32, 31, 2);
+INSERT INTO `types_food` VALUES (33, 32, 2);
+INSERT INTO `types_food` VALUES (34, 33, 2);
+INSERT INTO `types_food` VALUES (35, 34, 2);
+INSERT INTO `types_food` VALUES (36, 35, 2);
+INSERT INTO `types_food` VALUES (37, 36, 2);
+INSERT INTO `types_food` VALUES (38, 37, 2);
+INSERT INTO `types_food` VALUES (39, 38, 2);
+INSERT INTO `types_food` VALUES (40, 39, 2);
+INSERT INTO `types_food` VALUES (41, 40, 2);
+INSERT INTO `types_food` VALUES (42, 41, 2);
+INSERT INTO `types_food` VALUES (43, 42, 2);
+INSERT INTO `types_food` VALUES (44, 43, 2);
+INSERT INTO `types_food` VALUES (45, 44, 2);
+INSERT INTO `types_food` VALUES (46, 45, 2);
+INSERT INTO `types_food` VALUES (47, 46, 2);
+INSERT INTO `types_food` VALUES (48, 47, 2);
+INSERT INTO `types_food` VALUES (49, 48, 2);
+INSERT INTO `types_food` VALUES (50, 49, 2);
+INSERT INTO `types_food` VALUES (51, 50, 2);
+INSERT INTO `types_food` VALUES (52, 51, 2);
+INSERT INTO `types_food` VALUES (53, 52, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

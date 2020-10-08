@@ -10,7 +10,6 @@
         :to="el.navUrl"
         v-for="(el, i) in navItem"
         :key="el.title"
-        @click.native="fn($event, i)"
         >{{ el.title }}</router-link
       >
     </div>
@@ -28,8 +27,8 @@ export default {
   data() {
     return {
       navItem: [
-        { title: "菜谱首页", navUrl: "##" },
-        { title: "浏览全部菜谱", navUrl: "##" },
+        { title: "菜谱首页", navUrl: "/CaiPu" },
+        { title: "浏览全部菜谱", navUrl: "/AllCaiPu" },
       ],
     };
   },

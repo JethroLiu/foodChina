@@ -12,4 +12,6 @@ module.exports = (app) => {
   router.get("/makeup", controller.home.makeup);
   router.get("/share", controller.home.share);
   router.get("/caipu", controller.caipu.index);
+  router.get("/mytypes", controller.allCaiPu.index);
+  router.get("/mymakes", controller.makeup.index);
 };

@@ -27,7 +27,7 @@
     </div>
 
     <!-- 查看更多 -->
-    <a href="javascript:;" class="more">查看更多</a>
+    <a href="javascript:;" class="more" @click="getmore()">查看更多</a>
   </div>
 </template>
 
@@ -38,6 +38,8 @@ export default {
     return {
       navName: [],
       foods: [],
+      nowChoose: " 热菜 ",
+      moreBegin: 0,
     };
   },
   methods: {
@@ -55,7 +57,40 @@ export default {
         el.className = "leftNav";
       });
       e.target.className = "leftNav actived";
-      console.log(e.target.innerHTML); // 获取到了点击的具体项,网络请求后改变data容器
+
+      // console.log(e.target.innerHTML); // 获取到了点击的具体项,网络请求后改变data容器
+      this.nowChoose = e.target.innerHTML;
+      if (e.target.innerHTML == " 热菜 ") {
+        let res = await this.$axios.get("/caipu?status=1");
+        this.foods = res.data;
+      } else if (e.target.innerHTML == " 凉菜 ") {
+        let res = await this.$axios.get("/caipu?status=2");
+        this.foods = res.data;
+      } else if (e.target.innerHTML == " 汤羹 ") {
+        let res = await this.$axios.get("/caipu?status=3");
+        this.foods = res.data;
+      } else if (e.target.innerHTML == " 主食 ") {
+        let res = await this.$axios.get("/caipu?status=4");
+        this.foods = res.data;
+      } else if (e.target.innerHTML == " 小吃 ") {
+        let res = await this.$axios.get("/caipu?status=5");
+        this.foods = res.data;
+      } else if (e.target.innerHTML == " 家常菜 ") {
+        let res = await this.$axios.get("/caipu?status=6");
+        this.foods = res.data;
+      }
+
+      this.moreBegin = 0;
+    },
+
+    // 查看更多
+    async getmore() {
+      this.moreBegin += 16;
+      let res = await this.$axios.get(
+        `/caipu?status=more&type=${this.nowChoose}&begin=${this.moreBegin}`
+      );
+
+      this.foods = [...this.foods, ...res.data]; // 加入内容
     },
   },
   mounted() {

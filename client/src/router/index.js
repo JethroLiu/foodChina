@@ -17,6 +17,18 @@ const routes = [
     component: () => import("../views/CaiPu.vue"),
   },
   {
+    // 全部菜谱
+    path: "/AllCaiPu",
+    name: "AllCaiPu",
+    component: () => import("../views/AllCaiPu.vue"),
+  },
+  {
+    // 食材
+    path: "/MakeUp",
+    name: "MakeUp",
+    component: () => import("../views/MakeUp.vue"),
+  },
+  {
     // 登录注册
     path: "/MyUser",
     name: "MyUser",
