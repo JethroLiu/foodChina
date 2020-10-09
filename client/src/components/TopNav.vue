@@ -12,8 +12,8 @@
 
         <!-- 右侧导航 -->
         <div class="rightNav">
-            <router-link to="/Login">登录</router-link>
-            <router-link to="/Register">注册</router-link>
+            <router-link to="/Login" target="_blank">登录</router-link>
+            <router-link to="/Register" target="_blank">注册</router-link>
 
             <!-- QQ登录和下拉菜单 -->
             <a href="javascript:void(0);">

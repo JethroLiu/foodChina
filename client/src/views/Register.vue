@@ -33,24 +33,27 @@
         <div class="register_box">
             <img class="register_logo" src="../assets/logo.png" alt="load_err" />
 
-            <input id="email" type="text" v-model="email" placeholder="请输入注册邮箱" />
-            <input id="username" type="text" v-model="username" placeholder="请输入昵称" />
-            <input id="password" type="password" v-model="password" placeholder="请输入密码" />
-            <input id="new_password" type="password" v-model="new_password" placeholder="请再次输入密码" />
+            <input id="email" type="text" v-model="email" placeholder="请输入注册邮箱" autocomplete="off" />
+            <input id="username" type="text" v-model="username" placeholder="请输入昵称" autocomplete="off" />
+            <input id="password" type="password" v-model="password" placeholder="请输入密码" autocomplete="off" />
+            <input id="new_password" type="password" v-model="new_password" placeholder="请再次输入密码" autocomplete="off" />
 
             <input id="userPic" type="file" @change="fileChange($event)" />
-            <label class="user_pic" for="userPic">上传头像</label>
+            <label class="user_pic" for="userPic"></label>
+            <img class="headShow" :src="usrPicUrl" alt="上传头像" />
 
             <div class="address">
-                <select id="province">
-                    <option>四川</option>
+                <select id="province" @change="getcity">
+                    <option disabled selected>选择省份</option>
+                    <option v-for="item in address" :key="item.province">{{ item.province }}</option>
                 </select>
                 <select id="city">
-                    <option>成都</option>
+                    <option disabled selected>选择城市</option>
+                    <option v-for="item in citys" :key="item">{{ item }}</option>
                 </select>
             </div>
 
-            <input id="sign" type="text" v-model="new_password" placeholder="个性签名" />
+            <input id="sign" type="text" v-model="sign" placeholder="个性签名" autocomplete="off" />
 
             <button class="reset_btn" @click="reset">重置输入</button>
             <button class="register_btn" @click="register_now">立即注册</button>
@@ -66,12 +69,22 @@ export default {
         return {
             screenWidth: document.body.clientWidth, // 屏幕尺寸
             screenHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕尺寸
+
             email: "",
             username: "",
             password: "",
             new_password: "",
             sign: "",
             userPic: "",
+            usrPicUrl: "upload.png",
+
+            address: [
+                { province: "四川", city: ["成都", "自贡", "攀枝花", "泸州", "德阳"] },
+                { province: "河北", city: ["石家庄", "唐山", "秦皇岛", "邯郸", "邢台"] },
+                { province: "山西", city: ["太原", "大同", "阳泉", "长治", "晋城"] },
+                { province: "辽宁", city: ["沈阳", "大连", "鞍山", "抚顺", "本溪"] },
+            ],
+            citys: [],
         };
     },
     mounted() {
@@ -93,12 +106,22 @@ export default {
             console.log("马上注册！");
         },
         tologin() {
-            console.log("去登陆");
+            this.$router.push("/Login");
         },
-
         fileChange(event) {
             this.userPic = event.target.files[0];
-            console.log(this.userPic);
+            let reader = new FileReader();
+            reader.readAsDataURL(this.userPic);
+            reader.onload = () => {
+                this.usrPicUrl = reader.result;
+            };
+        },
+        getcity(event) {
+            for (let i = 0; i < this.address.length; i++) {
+                if (this.address[i].province == event.target.value) {
+                    this.citys = this.address[i].city;
+                }
+            }
         },
     },
 };
@@ -272,10 +295,26 @@ export default {
     position: absolute;
     top: 90px;
     left: 560px;
+    z-index: 5;
     width: 160px;
     height: 160px;
     border-radius: 6px;
-    background-color: #ff6767;
+    background-color: transparent;
     cursor: pointer;
+}
+
+.headShow {
+    position: absolute;
+    top: 90px;
+    left: 560px;
+    width: 160px;
+    height: 160px;
+    border: 1px solid #ff6767;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 160px;
+    text-align: center;
+    letter-spacing: 1px;
+    user-select: none;
 }
 </style>

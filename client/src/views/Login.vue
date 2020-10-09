@@ -30,8 +30,8 @@
         <!-- 登录表单 -->
         <div class="login_box">
             <img class="login_logo" src="../assets/logo.png" alt="load_err" />
-            <input id="email" type="text" v-model="email" placeholder="请输入邮箱" />
-            <input id="password" type="password" v-model="password" placeholder="请输入密码" />
+            <input id="email" type="text" v-model="email" placeholder="请输入邮箱" autocomplete="off" />
+            <input id="password" type="password" v-model="password" placeholder="请输入密码" autocomplete="off" />
 
             <button class="reset_btn" @click="reset">重置输入</button>
             <button class="login_btn" @click="login_now">立即登录</button>
@@ -67,7 +67,7 @@ export default {
             console.log("马上登录！");
         },
         toregister() {
-            console.log("去注册界面");
+            this.$router.push("/Register");
         },
     },
 };

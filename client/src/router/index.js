@@ -28,33 +28,15 @@ const routes = [
         name: "MakeUp",
         component: () => import("../views/MakeUp.vue"),
     },
+
     {
-        // 登录注册
-        path: "/MyUser",
-        name: "MyUser",
-        component: () => import("../views/MyUser.vue"),
-        redirect: "/MyUser/Login",
-        children: [
-            {
-                path: "Login",
-                name: "Login",
-                component: () => import("@/components/MyUser/Login.vue"),
-            },
-            {
-                path: "Register",
-                name: "Register",
-                component: () => import("@/components/MyUser/Register.vue"),
-            },
-        ],
-    },
-    {
-        // 登录 (新)
+        // 登录
         path: "/Login",
         name: "Login",
         component: () => import("../views/Login.vue"),
     },
     {
-        // 注册 (新)
+        // 注册
         path: "/Register",
         name: "Register",
         component: () => import("../views/Register.vue"),
@@ -67,7 +49,6 @@ const router = new VueRouter({
     routes,
 });
 
-// 全局前置守卫 访问拦截
 router.beforeEach((to, from, next) => {
     // 允许访问首页和登录注册
     // if (to.path == "/" || to.path == "/MyUser/Login") {
