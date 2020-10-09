@@ -1,19 +1,41 @@
 <template>
-    <div class="login w">
-        <div class="loginBox ">
-            <div class="userEmail">
-                <label for="email">用户邮箱</label>
-                <input id="email" type="text" v-model="email" />
-            </div>
-            <div class="userPassword">
-                <label for="password">用户密码</label>
-                <input id="password" type="text" v-model="password" />
-            </div>
+    <div id="login">
+        <!-- 背景轮播图 -->
+        <div class="block">
+            <el-carousel :height="`${screenHeight}px`" indicator-position="none" arrow="never">
+                <el-carousel-item>
+                    <img src="../assets/1.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/2.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/3.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/4.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/5.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/6.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/7.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+            </el-carousel>
+        </div>
 
-            <div class="makeSure">
-                <button @click="login">立即登录</button>
-                <button @click="toRegister">注册账号</button>
-            </div>
+        <!-- 登录表单 -->
+        <div class="login_box">
+            <img class="login_logo" src="../assets/logo.png" alt="load_err" />
+            <input id="email" type="text" v-model="email" placeholder="请输入邮箱" />
+            <input id="password" type="password" v-model="password" placeholder="请输入密码" />
+
+            <button class="reset_btn" @click="reset">重置输入</button>
+            <button class="login_btn" @click="login_now">立即登录</button>
+            <button class="toregister_btn" @click="toregister">注册账号</button>
         </div>
     </div>
 </template>
@@ -23,101 +45,136 @@ export default {
     name: "Login",
     data() {
         return {
+            screenWidth: document.body.clientWidth, // 屏幕尺寸
+            screenHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕尺寸
             email: "",
             password: "",
         };
     },
     mounted() {
-        this.email = this.$route.params.email;
-        this.password = this.$route.params.password;
+        const that = this;
+        window.onresize = () => {
+            that.screenWidth = document.body.clientWidth;
+            that.screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        };
     },
     methods: {
-        toRegister() {
-            this.$router.push("/Register");
+        reset() {
+            this.email = "";
+            this.password = "";
         },
-        async login() {
-            let loginRes = await this.$axios.post("/login", { email: this.email, password: this.password });
-            if (loginRes.data.code == 2002) {
-                // 登陆成功,先缓存，再跳转
-                /* 
-                    前端缓存 localstorage sessionStorage cookie
-                    后端缓存 后2前1 前(cookie)
-                */
-                // 前端缓存
-                window.localStorage.setItem("islogin", true);
-                this.$router.push("/");
-            } else if (loginRes.data.code == 4005) {
-                // 账号或密码错误
-            }
+        login_now() {
+            console.log("马上登录！");
+        },
+        toregister() {
+            console.log("去注册界面");
         },
     },
 };
 </script>
+
 <style scoped>
-.loginBox {
-    box-sizing: border-box;
-    width: 400px;
-    height: 400px;
-    padding: 10px;
-    border: 1px solid #4d90fe;
+#login {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    padding-top: 60px;
 }
 
-.userEmail,
-.userPassword {
-    height: 40px;
-    margin-top: 10px;
+.block {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
 }
 
-.makeSure {
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-    height: 40px;
-    margin-top: 20px;
-    padding: 0 40px 0;
-}
-
-.userEmail label,
-.userPassword label {
-    display: inline-block;
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-    line-height: 40px;
-    letter-spacing: 1px;
-    text-align: center;
-    user-select: none;
-}
-
-.userEmail input,
-.userPassword input {
-    vertical-align: middle;
-    box-sizing: border-box;
-    width: 200px;
-    height: 26px;
-    padding: 0 6px;
-    border: 1px solid #4d90fe;
-    outline: none;
-}
-
-.makeSure button {
-    display: inline-block;
-    height: 40px;
-    padding: 0 20px;
-    border: 1px solid #4d90fe;
+.login_box {
+    position: relative;
+    width: 600px;
+    height: 330px;
+    margin: 0px auto;
     border-radius: 6px;
-    font-size: 16px;
-    line-height: 40px;
-    color: #4d90fe;
-    user-select: none;
-    background-color: #ffffff;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.5s;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 1px 0 6px 3px rgba(0, 0, 0, 0.2);
 }
 
-.makeSure button:hover {
-    transform: translate3d(0, -1px, 0);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+.login_logo {
+    position: absolute;
+    top: 20px;
+    left: 250px;
+    width: 100px;
+}
+
+#email {
+    position: absolute;
+    top: 90px;
+    left: 150px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+    padding: 0 8px;
+    border: 1px solid #ff6767;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+}
+
+#password {
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+    padding: 0 8px;
+    border: 1px solid #ff6767;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+}
+
+.reset_btn,
+.login_btn,
+.toregister_btn {
+    position: absolute;
+    top: 230px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid #ff6767;
+    border-radius: 6px;
+    outline: none;
+    font-size: 14px;
+    color: #ff6767;
+    text-align: center;
+    letter-spacing: 1px;
+    user-select: none;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.reset_btn {
+    left: 100px;
+}
+
+.login_btn {
+    left: 240px;
+}
+
+.toregister_btn {
+    left: 380px;
+}
+
+.reset_btn:hover,
+.login_btn:hover,
+.toregister_btn:hover {
+    color: #fff;
+    background-color: #ff6767;
 }
 </style>

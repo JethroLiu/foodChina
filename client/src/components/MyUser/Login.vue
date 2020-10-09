@@ -1,5 +1,5 @@
 <template>
-    <div class="login ">
+    <div class="login">
         <div class="loginBox">
             <div class="userEmail">
                 <label for="email">用户邮箱</label>
@@ -39,7 +39,8 @@ export default {
     },
     methods: {
         toRegister() {
-            this.$router.push("/Register");
+            this.$router.push("/MyUser/Register");
+            this.$parent.choosePlay(2);
         },
         async login() {
             let loginRes = await this.$axios.post("/login", {
@@ -49,9 +50,9 @@ export default {
             if (loginRes.data.code == 2002) {
                 // 登陆成功,先缓存，再跳转
                 /* 
-                    前端缓存 localstorage sessionStorage cookie
-                    后端缓存 后2前1 前(cookie)
-                */
+          前端缓存 localstorage sessionStorage cookie
+          后端缓存 后2前1 前(cookie)
+        */
                 // 前端缓存
                 window.localStorage.setItem("islogin", true);
                 this.$router.push("/");
@@ -127,10 +128,12 @@ export default {
     vertical-align: middle;
     box-sizing: border-box;
     width: 200px;
-    height: 26px;
+    height: 30px;
     padding: 0 6px;
     border: 1px solid #4d90fe;
+    border-radius: 4px;
     outline: none;
+    font-size: 14px;
 }
 
 .makeSure button {

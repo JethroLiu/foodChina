@@ -20,7 +20,7 @@
         </div>
         <div class="mysvg" v-if="mysvg">验证码错误</div>
         <div class="makeSure">
-            <button>登录</button>
+            <button @click="toLogin">用户登录</button>
             <button @click="send">立即注册</button>
         </div>
     </div>
@@ -55,7 +55,9 @@ export default {
             fileReader.append("userPwd", this.userPwd);
             fileReader.append("svg", this.userSvg);
             // 发送注册的请求，并得到返回结果
-            let myres = await this.$axios.post("/register", fileReader, { header: { "Content-Type": "pplication/x-www-form-urlencoded" } });
+            let myres = await this.$axios.post("/register", fileReader, {
+                header: { "Content-Type": "pplication/x-www-form-urlencoded" },
+            });
             // .then((res) => {res.data里面有404 以及注册等数据 })
             // 根据错误码执行相对应的逻辑
             console.log(myres);
@@ -78,6 +80,11 @@ export default {
         },
         fileChange(event) {
             this.userPic = event.target.files[0];
+        },
+
+        toLogin() {
+            this.$router.push("/MyUser/Login");
+            this.$parent.choosePlay(1);
         },
     },
     components: {},
