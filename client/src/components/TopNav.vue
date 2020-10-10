@@ -12,11 +12,11 @@
 
         <!-- 右侧导航 -->
         <div class="rightNav">
-            <router-link to="/Login" target="_blank" v-show="isLogin">登录</router-link>
-            <router-link to="/Register" target="_blank" v-show="isLogin">注册</router-link>
+            <router-link class="userlogin" to="/Login" target="_blank" v-show="isLogin">登录</router-link>
+            <router-link class="userregister" to="/Register" target="_blank" v-show="isLogin">注册</router-link>
 
             <!-- QQ登录和下拉菜单 -->
-            <a href="javascript:void(0);" v-show="isLogin">
+            <a class="qqlogin" href="javascript:void(0);" v-show="isLogin">
                 QQ登录
                 <div id="moreLogin">
                     <a href="javascript:void(0);">微博登录</a>
@@ -26,6 +26,12 @@
 
             <a href="javascript:;" class="headPicBox" v-show="!isLogin">
                 <img :src="loginMes.info.headpic" alt="load_error" />
+
+                <div class="user_choose">
+                    <a :class="item.class" href="javascript:;" v-for="item in userChoose" :key="item.name" @click="userSelf">
+                        {{ item.name }}
+                    </a>
+                </div>
             </a>
 
             <!-- 发布和下拉菜单 -->
@@ -74,18 +80,47 @@ export default {
                     headpic: "",
                 },
             },
+
+            userChoose: [
+                { name: "收藏", link: "##", class: "w1" },
+                { name: "管理", link: "##", class: "w2" },
+                { name: "私信", link: "##", class: "w3" },
+                { name: "通知", link: "##", class: "w4" },
+                { name: "退出", link: "##", class: "w5" },
+            ],
         };
     },
+    methods: {
+        userSelf(event) {
+            console.log(event.target.innerText);
+            if (event.target.innerText == "退出") {
+                localStorage.removeItem("islogin");
+                this.isLogin = true;
+            }
+        },
+    },
     mounted() {
+        this.$axios.get("/session1").then((res) => {
+            // 有缓存，说明登陆过
+            if (res.data[0]) {
+                this.isLogin = false;
+                this.loginMes.info.headpic = res.data[0].headpic;
+            } else {
+                // 未登陆或登录已过期
+                localStorage.removeItem("islogin");
+                this.isLogin = true;
+            }
+        });
+
         this.$bus.$on("isLogin", (data) => {
             if (data.mes == "logined") {
                 this.isLogin = false;
                 this.loginMes = data.info;
             } else if (data.mes == "beforeLogin") {
                 // 登出
+                localStorage.removeItem("islogin");
                 this.isLogin = true;
             }
-            console.log(this.loginMes);
         });
     },
 };
@@ -142,8 +177,8 @@ export default {
     height: 40px;
 }
 
-.rightNav a:nth-of-type(1),
-.rightNav a:nth-of-type(2) {
+.userlogin,
+.userregister {
     display: inline-block;
     height: 40px;
     padding: 0 9px;
@@ -154,12 +189,12 @@ export default {
     user-select: none;
 }
 
-.rightNav a:nth-of-type(1):hover,
-.rightNav a:nth-of-type(2):hover {
+.userlogin:hover,
+.userregister:hover {
     background-color: #0d0d0d;
 }
 
-.rightNav a:nth-of-type(3) {
+.qqlogin {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -172,11 +207,11 @@ export default {
     user-select: none;
 }
 
-.rightNav a:nth-of-type(3):hover {
+.qqlogin:hover {
     background-color: #0d0d0d;
 }
 
-.rightNav a:nth-of-type(3):hover #moreLogin {
+.qqlogin:hover #moreLogin {
     display: block;
 }
 
@@ -194,6 +229,11 @@ export default {
     height: 40px;
     padding: 0;
     font-size: 12px;
+    line-height: 40px;
+    color: #cccccc;
+    text-decoration: none;
+    text-align: center;
+    user-select: none;
 }
 
 /* 活动 */
@@ -278,9 +318,15 @@ export default {
 
 .headPicBox {
     position: relative;
+    display: inline-block;
     width: 40px;
     height: 40px;
     margin-right: 10px;
+    text-align: center;
+}
+
+.headPicBox:hover .user_choose {
+    display: block;
 }
 
 .headPicBox img {
@@ -288,5 +334,57 @@ export default {
     height: 30px;
     border-radius: 15px;
     margin-top: 5px;
+}
+
+.user_choose {
+    position: absolute;
+    top: 40px;
+    left: -10px;
+    display: none;
+    width: 60px;
+}
+
+.w1,
+.w2,
+.w3,
+.w4,
+.w5 {
+    display: block;
+    height: 40px;
+    font-size: 13px;
+    color: #f1f1f1;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 1px;
+    user-select: none;
+}
+
+.w1 {
+    background-color: #585757;
+}
+
+.w2 {
+    background-color: #717070;
+}
+
+.w3 {
+    background-color: #7d7d7d;
+}
+
+.w4 {
+    background-color: #939393;
+}
+
+.w5 {
+    background-color: #9f9f9f;
+}
+
+.w1:hover,
+.w2:hover,
+.w3:hover,
+.w4:hover,
+.w5:hover {
+    color: #fff;
 }
 </style>

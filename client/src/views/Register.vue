@@ -43,17 +43,20 @@
             <img class="headShow" :src="usrPicUrl" alt="上传头像" />
 
             <div class="address">
-                <select id="province" @change="getcity">
+                <select id="province" @change="getcity" v-model="province">
                     <option disabled selected>选择省份</option>
                     <option v-for="item in address" :key="item.province">{{ item.province }}</option>
                 </select>
-                <select id="city">
+                <select id="city" v-model="city">
                     <option disabled selected>选择城市</option>
                     <option v-for="item in citys" :key="item">{{ item }}</option>
                 </select>
             </div>
 
             <input id="sign" type="text" v-model="sign" placeholder="个性签名" autocomplete="off" />
+
+            <input id="mysvg" type="text" v-model="userSvg" placeholder="请输入验证码" autocomplete="off" />
+            <span id="showsvg" @click="changeSvg" v-html="svg"></span>
 
             <button class="reset_btn" @click="reset">重置输入</button>
             <button class="register_btn" @click="register_now">立即注册</button>
@@ -69,6 +72,7 @@ export default {
         return {
             screenWidth: document.body.clientWidth, // 屏幕尺寸
             screenHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕尺寸
+            svg: "",
 
             email: "",
             username: "",
@@ -77,6 +81,9 @@ export default {
             sign: "",
             userPic: "",
             usrPicUrl: "upload.png",
+            province: "",
+            city: "",
+            userSvg: "",
 
             address: [
                 { province: "四川", city: ["成都", "自贡", "攀枝花", "泸州", "德阳"] },
@@ -93,6 +100,11 @@ export default {
             that.screenWidth = document.body.clientWidth;
             that.screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
         };
+
+        // 加载验证码
+        this.$axios.get("/verification").then((res) => {
+            this.svg = res.data.data;
+        });
     },
     methods: {
         reset() {
@@ -102,8 +114,74 @@ export default {
             this.new_password = "";
             this.sign = "";
         },
-        register_now() {
-            console.log("马上注册！");
+        async register_now() {
+            if (this.willRegister()) {
+                let address = this.province + this.city;
+
+                // 交互结果
+                let fileReader = new FormData();
+
+                fileReader.append("email", this.email);
+                fileReader.append("username", this.username);
+                fileReader.append("password", this.password);
+                fileReader.append("sign", this.sign);
+                fileReader.append("headpic", this.userPic);
+                fileReader.append("userSvg", this.userSvg);
+                fileReader.append("address", address);
+
+                // 发送注册的请求，并得到返回结果
+                let myres = await this.$axios.post("/register", fileReader, {
+                    header: { "Content-Type": "pplication/x-www-form-urlencoded" },
+                });
+
+                // 根据错误码执行相对应的逻辑
+                if (myres.data.code == 4001) {
+                    this.$message.error("验证码错误");
+                } else if (myres.data.code == 4002) {
+                    this.$message.error("此邮箱已经注册过了");
+                } else if (myres.data.code == 2001) {
+                    this.$message({
+                        message: "登录成功",
+                        type: "success",
+                    });
+
+                    // this.$router.push({ path: "/Login", params: { email: this.email, password: this.password } });
+                }
+            }
+        },
+        // 前端格式验证
+        willRegister() {
+            if (this.email == "") {
+                this.$message.error("请输入您的邮箱");
+            } else if (!this.checkEmail()) {
+                this.$message.error("请输入正确的邮箱格式");
+            } else if (this.username == "") {
+                this.$message.error("请输入您的昵称");
+            } else if (this.username.length > 30) {
+                this.$message.error("您的昵称过长");
+            } else if (this.password == "") {
+                this.$message.error("请输入您的密码");
+            } else if (this.password != this.new_password) {
+                this.$message.error("两次输入的密码不一致");
+            } else if (this.sign.length > 100) {
+                this.$message.error("您的个性签名太长了");
+            } else if (this.usrPicUrl == "upload.png" || this.usrPicUrl == "") {
+                this.$message.error("请选择您头像");
+            } else if (this.province == "" || this.city == "") {
+                this.$message.error("请完善地址信息");
+            } else {
+                return true;
+            }
+        },
+        changeSvg() {
+            this.$axios.get("/verification").then((res) => {
+                this.svg = res.data.data;
+            });
+        },
+        // 验证邮箱
+        checkEmail() {
+            let reg = /^[A-Za-z0-9]+([_\.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}$/;
+            return reg.test(this.email);
         },
         tologin() {
             this.$router.push("/Login");
@@ -148,7 +226,7 @@ export default {
 .register_box {
     position: relative;
     width: 990px;
-    height: 510px;
+    height: 570px;
     margin: 0px auto;
     border-radius: 6px;
     font-size: 20px;
@@ -246,11 +324,49 @@ export default {
     width: 630px;
 }
 
+#mysvg {
+    position: absolute;
+    top: 390px;
+    left: 180px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 40px;
+    padding: 0 8px;
+    border: 1px solid #ff6767;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+}
+
+#showsvg {
+    position: absolute;
+    top: 390px;
+    left: 510px;
+    display: block;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #ff6767;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#showsvg:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translate3d(0, -2px, 0);
+}
+
+#showsvg:active {
+    box-shadow: none;
+    transform: none;
+}
+
 .reset_btn,
 .register_btn,
 .tologin_btn {
     position: absolute;
-    top: 410px;
+    top: 470px;
     width: 120px;
     height: 40px;
     border: 1px solid #ff6767;

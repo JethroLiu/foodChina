@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { copyFileSync } from "fs";
 export default {
     name: "Login",
     data() {
@@ -68,6 +69,7 @@ export default {
             let loginRes = await this.$axios.post("/login", { email: this.email, password: this.password });
             if (loginRes.data.code == 2001) {
                 window.localStorage.setItem("islogin", true); // 前端缓存
+
                 this.open1();
                 setTimeout(() => {
                     this.$bus.$emit("isLogin", { mes: "logined", info: loginRes.data });

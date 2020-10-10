@@ -12,6 +12,7 @@ class UserController extends Controller {
         if (result[0]) {
             // 登录成功
             ctx.session.email = ctx.request.body.email;
+            console.log("控制层", ctx.session.email);
             ctx.body = { code: "2001", info: result[0] };
         } else {
             // 没有匹配的邮箱和密码
@@ -27,32 +28,36 @@ class UserController extends Controller {
 
     async register() {
         const { ctx } = this;
-        /* console.log(ctx.request.query, ctx.request.files, ctx.request.body);
+        // console.log(ctx.request.query);
+        // console.log(ctx.request.files);
+        // console.log(ctx.request.body);
 
         if (ctx.request.files) {
             let filename = path.basename(this.ctx.request.files[0].filepath);
             let oldPath = `${this.ctx.request.files[0].filepath}`;
             let newPath = `${__dirname}/../public/upload/${filename}`;
+
             // 移动上传的文件至项目文件夹
             fs.copyFileSync(oldPath, newPath);
             fs.unlink(oldPath, function (err) {
                 if (err) {
                     console.log(err);
                 }
-                console.log("文件移动成功！");
             });
-            let imageUrl = `http://192.168.3.114:7001/public/upload/${filename}`;
+
+            let imageUrl = `http://127.0.0.1:7001/public/upload/${filename}`;
             ctx.request.body.img = imageUrl;
             // 把注册结果传给 service 中的工具
             ctx.body = await ctx.service.user.register(ctx.request.body);
-        } */
+        }
     }
 
     async session1() {
-        /*  const { ctx } = this;
-        console.log(this.ctx.session.email);
-        let result = this.ctx.service.user.session1();
-        ctx.body = result; */
+        const { ctx } = this;
+        // console.log(this.ctx.session.email);
+        let result = await this.ctx.service.user.session1();
+        console.log(result);
+        ctx.body = result;
     }
 }
 
