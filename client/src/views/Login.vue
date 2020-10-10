@@ -63,11 +63,33 @@ export default {
             this.email = "";
             this.password = "";
         },
-        login_now() {
-            console.log("马上登录！");
+
+        async login_now() {
+            let loginRes = await this.$axios.post("/login", { email: this.email, password: this.password });
+            if (loginRes.data.code == 2001) {
+                window.localStorage.setItem("islogin", true); // 前端缓存
+                this.open1();
+                setTimeout(() => {
+                    this.$bus.$emit("isLogin", { mes: "logined", info: loginRes.data });
+                    this.$router.push("/"); // 跳转至首页
+                }, 1000);
+            } else if (loginRes.data.code == 4001) {
+                this.open2();
+            }
         },
+
         toregister() {
             this.$router.push("/Register");
+        },
+
+        open1() {
+            this.$message({
+                message: "登录成功",
+                type: "success",
+            });
+        },
+        open2() {
+            this.$message.error("账号或密码错误");
         },
     },
 };

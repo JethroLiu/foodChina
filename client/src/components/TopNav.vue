@@ -12,16 +12,20 @@
 
         <!-- 右侧导航 -->
         <div class="rightNav">
-            <router-link to="/Login" target="_blank">登录</router-link>
-            <router-link to="/Register" target="_blank">注册</router-link>
+            <router-link to="/Login" target="_blank" v-show="isLogin">登录</router-link>
+            <router-link to="/Register" target="_blank" v-show="isLogin">注册</router-link>
 
             <!-- QQ登录和下拉菜单 -->
-            <a href="javascript:void(0);">
+            <a href="javascript:void(0);" v-show="isLogin">
                 QQ登录
                 <div id="moreLogin">
                     <a href="javascript:void(0);">微博登录</a>
                     <a href="javascript:void(0);">微信登录</a>
                 </div>
+            </a>
+
+            <a href="javascript:;" class="headPicBox" v-show="!isLogin">
+                <img :src="loginMes.info.headpic" alt="load_error" />
             </a>
 
             <!-- 发布和下拉菜单 -->
@@ -64,7 +68,25 @@ export default {
                 { navName: "烘焙", toWhere: "##" },
                 { navName: "妈妈派", toWhere: "##" },
             ],
+            isLogin: true,
+            loginMes: {
+                info: {
+                    headpic: "",
+                },
+            },
         };
+    },
+    mounted() {
+        this.$bus.$on("isLogin", (data) => {
+            if (data.mes == "logined") {
+                this.isLogin = false;
+                this.loginMes = data.info;
+            } else if (data.mes == "beforeLogin") {
+                // 登出
+                this.isLogin = true;
+            }
+            console.log(this.loginMes);
+        });
     },
 };
 </script>
@@ -252,5 +274,19 @@ export default {
     height: 100px;
     background-image: url(../assets/msc_app.png);
     background-size: 100px 100px;
+}
+
+.headPicBox {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.headPicBox img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin-top: 5px;
 }
 </style>

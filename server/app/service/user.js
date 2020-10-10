@@ -3,8 +3,15 @@
 const Service = require("egg").Service;
 const svgCaptcha = require("svg-captcha");
 class UserService extends Service {
-    async verification() {
+    async login(logininfo) {
         const { ctx } = this;
+        const sql = `select *from myuser where email="${logininfo.email}" and password="${logininfo.password}"`;
+        let result = await this.app.mysql.query(sql);
+        return result;
+    }
+
+    async verification() {
+        /*  const { ctx } = this;
         const data = svgCaptcha.create({
             size: 4,
             fontSize: 50,
@@ -15,11 +22,11 @@ class UserService extends Service {
         // 为每一个请求的ip地址开辟一篇空间，用来存储只属于这个用户的数据
         // session 的属性名是自定义的，用来保存某个数据
         this.ctx.session.verif = data.text;
-        return data;
+        return data; */
     }
 
     async register(userinfo) {
-        const { ctx } = this;
+        /* const { ctx } = this;
         console.log(userinfo);
         console.log(this.ctx.session.verif);
         // 验证数据中的数据
@@ -39,21 +46,14 @@ class UserService extends Service {
                     return { code: "5001", info: "后台错误" };
                 }
             }
-        }
-    }
-
-    async login(logininfo) {
-        const { ctx } = this;
-        let sql = `select *from myuser where email="${logininfo.email}" and password="${logininfo.password}"`;
-        let result = await this.app.mysql.query(sql);
-        return result;
+        } */
     }
 
     async session1() {
-        const { ctx } = this;
+        /* const { ctx } = this;
         let sql = `select *from myuser where email="${ctx.session.email}"`;
         let result = await this.app.mysql.query(sql);
-        return result;
+        return result; */
     }
 }
 

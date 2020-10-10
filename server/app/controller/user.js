@@ -5,13 +5,29 @@ const fs = require("fs");
 const path = require("path");
 
 class UserController extends Controller {
-    async index() {
+    // 用户登录
+    async login() {
         const { ctx } = this;
-        ctx.body = "index";
+        let result = await ctx.service.user.login(ctx.request.body);
+        if (result[0]) {
+            // 登录成功
+            ctx.session.email = ctx.request.body.email;
+            ctx.body = { code: "2001", info: result[0] };
+        } else {
+            // 没有匹配的邮箱和密码
+            ctx.body = { code: "4001", info: "账号或密码错误" };
+        }
     }
+
+    // 验证码
+    async verification() {
+        const { ctx } = this;
+        ctx.body = await ctx.service.user.verification();
+    }
+
     async register() {
         const { ctx } = this;
-        console.log(ctx.request.query, ctx.request.files, ctx.request.body);
+        /* console.log(ctx.request.query, ctx.request.files, ctx.request.body);
 
         if (ctx.request.files) {
             let filename = path.basename(this.ctx.request.files[0].filepath);
@@ -29,32 +45,14 @@ class UserController extends Controller {
             ctx.request.body.img = imageUrl;
             // 把注册结果传给 service 中的工具
             ctx.body = await ctx.service.user.register(ctx.request.body);
-        }
-    }
-    async verification() {
-        const { ctx } = this;
-        ctx.body = await ctx.service.user.verification();
-    }
-
-    async login() {
-        const { ctx } = this;
-        let result = await ctx.service.user.login(ctx.request.body);
-        if (result[0]) {
-            // 登录成功，通知浏览器做 cookie，
-            // ctx.session.email 在整个后端任何地方都可访问，仅限同一个客户端ip
-            ctx.session.email = ctx.request.body.email;
-            // 返回客户端
-            ctx.body = { code: "2002", info: result[0] };
-        } else {
-            ctx.body = { code: "4005", info: "账号或密码错误" };
-        }
+        } */
     }
 
     async session1() {
-        const { ctx } = this;
+        /*  const { ctx } = this;
         console.log(this.ctx.session.email);
         let result = this.ctx.service.user.session1();
-        ctx.body = result;
+        ctx.body = result; */
     }
 }
 
