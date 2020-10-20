@@ -13,9 +13,6 @@ import Footer from "@/components/Index/Footer.vue";
 
 export default {
   name: "AllCaiPu",
-  data() {
-    return {};
-  },
   components: {
     MyTypes,
     Footer,

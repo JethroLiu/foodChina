@@ -50,20 +50,16 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-    // 允许访问首页和登录注册;
-    if (to.path == "/" || to.path == "/Login") {
-        next();
-    } else {
-        // 查看用户是否登录
-        let flag = localStorage.getItem("islogin"); // 取本地缓存查看是否登陆过
+    if (to.path == "/test") {
+        let flag = localStorage.getItem("islogin");
         if (flag) {
             next();
         } else {
-            next("/Login"); // next 也会触发 beforeEach
+            next("/Login");
         }
+    } else {
+        next();
     }
-
-    next();
 });
 
 export default router;

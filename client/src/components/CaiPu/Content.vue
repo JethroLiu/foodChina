@@ -11,7 +11,7 @@
                 {{ item.typename }}
             </a>
 
-            <a class="moreNav" href="javascript:;">全部分类</a>
+            <router-link class="moreNav" to="/AllCaiPu">全部分类</router-link>
         </div>
 
         <!-- 菜谱内容 -->

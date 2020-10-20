@@ -19,4 +19,6 @@ module.exports = (app) => {
     router.post("/register", controller.user.register);
     router.get("/verification", controller.user.verification);
     router.get("/session1", controller.user.session1);
+
+    router.get("/logout", controller.user.logout);
 };

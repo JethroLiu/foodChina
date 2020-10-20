@@ -12,7 +12,6 @@ class UserController extends Controller {
         if (result[0]) {
             // 登录成功
             ctx.session.email = ctx.request.body.email;
-            console.log("控制层", ctx.session.email);
             ctx.body = { code: "2001", info: result[0] };
         } else {
             // 没有匹配的邮箱和密码
@@ -47,18 +46,22 @@ class UserController extends Controller {
 
             let imageUrl = `http://127.0.0.1:7001/public/upload/${filename}`;
             ctx.request.body.img = imageUrl;
-            // 把注册结果传给 service 中的工具
             ctx.body = await ctx.service.user.register(ctx.request.body);
         }
     }
 
     async session1() {
         const { ctx } = this;
-        // console.log(this.ctx.session.email);
         let result = await this.ctx.service.user.session1();
-        console.log(result);
         ctx.body = result;
     }
+
+
+    async logout() {
+      const { ctx } = this;
+      ctx.session.email = null;
+      ctx.body = "退出成功";
+  }
 }
 
 module.exports = UserController;

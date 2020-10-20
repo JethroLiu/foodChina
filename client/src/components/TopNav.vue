@@ -1,6 +1,6 @@
 // 全局顶部导航栏
 <template>
-    <div id="topnav">
+    <div id="topnav" key="topnav">
         <span class="logo">美食天下</span>
 
         <!-- 导航按钮 -->
@@ -95,6 +95,7 @@ export default {
             console.log(event.target.innerText);
             if (event.target.innerText == "退出") {
                 localStorage.removeItem("islogin");
+                this.$axios.get("/logout");
                 this.isLogin = true;
             }
         },

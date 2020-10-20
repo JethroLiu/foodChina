@@ -19,17 +19,12 @@ class UserService extends Service {
             height: 40,
             background: "#ffffff",
         });
-        // 为每一个请求的ip地址开辟一篇空间，用来存储只属于这个用户的数据
-        // session 的属性名是自定义的，用来保存某个数据
         this.ctx.session.verif = data.text;
         return data;
     }
 
     async register(userinfo) {
         const { ctx } = this;
-        // console.log(userinfo);
-        // console.log(this.ctx.session.verif);
-        // 验证数据中的数据
         if (userinfo.userSvg.toUpperCase() !== this.ctx.session.verif.toUpperCase()) {
             return { code: "4001", info: "验证码错误" };
         } else {

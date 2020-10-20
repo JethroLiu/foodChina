@@ -70,8 +70,8 @@ export default {
     name: "Register",
     data() {
         return {
-            screenWidth: document.body.clientWidth, // 屏幕尺寸
-            screenHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕尺寸
+            screenWidth: document.body.clientWidth, // 屏幕宽度
+            screenHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕高度
             svg: "",
 
             email: "",
@@ -98,7 +98,8 @@ export default {
         const that = this;
         window.onresize = () => {
             that.screenWidth = document.body.clientWidth;
-            that.screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            that.screenHeight = document.documentElement.clientHeight || 
+                document.body.clientHeight;
         };
 
         // 加载验证码

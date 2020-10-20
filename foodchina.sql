@@ -11,7 +11,7 @@
  Target Server Version : 50173
  File Encoding         : 65001
 
- Date: 08/10/2020 15:04:14
+ Date: 20/10/2020 11:14:42
 */
 
 SET NAMES utf8mb4;
@@ -756,7 +756,7 @@ CREATE TABLE `types_food`  (
   `eatablesId` int(11) NULL DEFAULT NULL COMMENT '菜谱 id',
   `typesId` int(11) NULL DEFAULT NULL COMMENT '分类 id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of types_food

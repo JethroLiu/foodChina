@@ -7,12 +7,7 @@
         </div>
       </div>
       <div class="typename">
-        <router-link
-          class="typeitem"
-          to="##"
-          v-for="myitem in item.typename"
-          :key="myitem"
-        >
+        <router-link class="typeitem" to="##" v-for="myitem in item.typename" :key="myitem">
           {{ myitem }}
         </router-link>
       </div>
